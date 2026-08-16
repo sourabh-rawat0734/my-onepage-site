@@ -1,0 +1,86 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Id nostrud reprehenderit commodo commodo veniam. Aliqua occaecat mollit consectetur magna magna elit cillum culpa eu."
+						}
+					}
+				]
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Forth"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Enim incididunt fugiat nulla culpa mollit occaecat voluptate. Fugiat veniam non aliquip nulla commodo pariatur do aliquip non Lorem consectetur labore aute."
+						}
+					}
+				]
+			},
+			"feature_groups": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"key": "f16adfaa-5b37-4ff4-b559-265d8947fcca",
+						"value": [
+							[
+								"group_heading",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "religious",
+									"type": "Text"
+								}
+							],
+							[
+								"features",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Mollit et incididunt pariatur minim consequat."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"highlighted_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ea ea et fugiat consequat sunt non proident dolore. Esse incididunt dolor ea fugiat consectetur ipsum reprehenderit ipsum eiusmod aute fugiat Lorem commodo."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

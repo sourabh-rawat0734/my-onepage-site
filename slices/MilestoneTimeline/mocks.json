@@ -1,0 +1,97 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "simple_two_column",
+		"primary": {
+			"section_heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Essential"
+						}
+					}
+				]
+			},
+			"section_subheading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eu velit non aliquip et eiusmod dolore. Laboris eiusmod anim exercitation et."
+						}
+					}
+				]
+			},
+			"milestones": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"key": "2bd2652e-3f72-4a8f-bd70-ca9fe13302ff",
+						"value": [
+							[
+								"date",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "shut",
+									"type": "Text"
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading4",
+											"content": {
+												"text": "Mission"
+											}
+										}
+									]
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Aliqua tempor cillum qui ea ut nulla. Eu qui ex officia id consequat qui dolor adipisicing qui in anim dolore nostrud."
+											}
+										}
+									]
+								}
+							],
+							[
+								"attribution",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "clay",
+									"type": "Text"
+								}
+							],
+							[
+								"external_link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "247f3fc1-8a8c-42ae-8a76-42c8d8a7c3cf",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://google.com"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

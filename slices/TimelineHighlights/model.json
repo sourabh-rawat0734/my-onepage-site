@@ -1,0 +1,73 @@
+{
+  "type": "SharedSlice",
+  "id": "timeline_highlights",
+  "name": "TimelineHighlights",
+  "variations": [
+    {
+      "id": "two_column_events",
+      "name": "Two Column Events",
+      "description": "Events are arranged in two columns, each showing date, title, description, author, and a LinkedIn button.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "section_title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Section Title"
+          }
+        },
+        "section_description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,hyperlink",
+            "label": "Section Description"
+          }
+        },
+        "milestones": {
+          "type": "Group",
+          "config": {
+            "label": "Milestones",
+            "fields": {
+              "date": {
+                "type": "Text",
+                "config": {
+                  "label": "Date"
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Milestone Title"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong",
+                  "label": "Milestone Description"
+                }
+              },
+              "author": {
+                "type": "Text",
+                "config": {
+                  "label": "Milestone Author"
+                }
+              },
+              "linkedin_button": {
+                "type": "Link",
+                "config": {
+                  "label": "LinkedIn Button",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

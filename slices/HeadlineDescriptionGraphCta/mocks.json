@@ -1,0 +1,189 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default_left_text_right_metric",
+		"primary": {
+			"eyebrow": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nisi id sint fugiat veniam commodo magna commodo adipisicing mollit."
+						}
+					}
+				]
+			},
+			"headline": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Soldier"
+						}
+					}
+				]
+			},
+			"highlighted_phrase": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Exercitation aliquip consequat nulla eu enim eu anim nostrud exercitation proident exercitation dolor ipsum consequat. Amet est adipisicing culpa do tempor mollit enim ullamco ipsum fugiat. Nisi consequat fugiat mollit duis tempor mollit commodo velit enim laborum excepteur reprehenderit."
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cillum ex velit eiusmod esse excepteur occaecat aute nisi ad nisi reprehenderit amet aute id."
+						}
+					}
+				]
+			},
+			"primary_cta": {
+				"__TYPE__": "LinkContent",
+				"key": "651c3209-1812-42b8-8425-f0248f4cb2d1",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "car"
+				}
+			},
+			"secondary_cta": {
+				"__TYPE__": "LinkContent",
+				"key": "ab4f0c79-bd89-4ca2-a8f5-b06ec7dea2df",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev",
+					"text": "tribe"
+				}
+			},
+			"metric_visualization_image": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+					"width": 5616,
+					"height": 3744
+				},
+				"width": 5616,
+				"height": 3744,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+				"alt": "do"
+			},
+			"metric_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading3",
+						"content": {
+							"text": "Search"
+						}
+					}
+				]
+			},
+			"metrics_list": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"key": "251a7aa0-83c5-4c57-aa45-92a913d7871b",
+						"value": [
+							[
+								"label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "run",
+									"type": "Text"
+								}
+							],
+							[
+								"value",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "77",
+									"type": "Number"
+								}
+							],
+							[
+								"unit",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "fed",
+									"type": "Text"
+								}
+							],
+							[
+								"style",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "critical",
+									"type": "Select"
+								}
+							]
+						]
+					}
+				]
+			},
+			"tag_list": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"key": "fbfcbb7c-edf6-48fc-8acb-c73d3a161798",
+						"value": [
+							[
+								"label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "seat",
+									"type": "Text"
+								}
+							],
+							[
+								"color_scheme",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "positive",
+									"type": "Select"
+								}
+							]
+						]
+					}
+				]
+			},
+			"recommendation_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Commodo sit cupidatat excepteur in eiusmod eiusmod. Qui ad laborum deserunt aute deserunt mollit. Ipsum quis nulla deserunt esse tempor incididunt amet minim nisi nisi et minim consectetur dolore voluptate."
+						}
+					}
+				]
+			},
+			"note": {
+				"__TYPE__": "FieldContent",
+				"value": "mathematics",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

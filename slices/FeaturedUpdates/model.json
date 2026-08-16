@@ -1,0 +1,74 @@
+{
+  "type": "SharedSlice",
+  "id": "featured_updates",
+  "name": "FeaturedUpdates",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Displays updates in a two-column layout, each featuring a date, headline, description, author/attribution, and an optional external link icon button.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "section_heading": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Section Heading"
+          }
+        },
+        "section_description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Section Description"
+          }
+        },
+        "updates": {
+          "type": "Group",
+          "config": {
+            "label": "Updates",
+            "fields": {
+              "date_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Date Label"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Title"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em",
+                  "label": "Description"
+                }
+              },
+              "attribution": {
+                "type": "Text",
+                "config": {
+                  "label": "Attribution"
+                }
+              },
+              "external_link": {
+                "type": "Link",
+                "config": {
+                  "label": "External Link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

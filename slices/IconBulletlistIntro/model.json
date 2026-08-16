@@ -1,0 +1,52 @@
+{
+  "type": "SharedSlice",
+  "id": "icon_bulletlist_intro",
+  "name": "IconBulletlistIntro",
+  "variations": [
+    {
+      "id": "intro_with_icon_bulletlist",
+      "name": "Intro with Icon Bulletlist",
+      "description": "Displays a short intro/heading followed by a bullet list, where each item has an icon, a title, and a description.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "intro_text": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading3",
+            "label": "Intro Text"
+          }
+        },
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Bullet Items",
+            "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "Item Title"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph,strong,em",
+                  "label": "Item Description"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

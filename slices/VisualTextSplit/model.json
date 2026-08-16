@@ -1,0 +1,51 @@
+{
+  "type": "SharedSlice",
+  "id": "visual_text_split",
+  "name": "VisualTextSplit",
+  "variations": [
+    {
+      "id": "image_left_text_right",
+      "name": "Image Left, Text Right",
+      "description": "Image or illustration block positioned left, textual content with heading and description on the right.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "section_preheading": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph,strong,em,hyperlink",
+            "label": "Section Preheading"
+          }
+        },
+        "section_heading": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Section Heading"
+          }
+        },
+        "section_description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Section Description"
+          }
+        },
+        "visual_block": {
+          "type": "Image",
+          "config": {
+            "label": "Visual Block"
+          }
+        },
+        "visual_caption": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph,strong,em,hyperlink",
+            "label": "Visual Caption"
+          }
+        }
+      }
+    }
+  ]
+}

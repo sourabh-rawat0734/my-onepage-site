@@ -1,0 +1,54 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"eyebrow": {
+				"__TYPE__": "FieldContent",
+				"value": "chicken",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Should"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sunt labore duis ipsum ex quis cupidatat cillum nostrud ut. In laborum anim elit qui."
+						}
+					}
+				]
+			},
+			"primary_cta": {
+				"__TYPE__": "LinkContent",
+				"key": "8c574f9c-2c40-41c7-9214-722bfcd3f7a6",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev",
+					"text": "situation"
+				}
+			},
+			"secondary_cta": {
+				"__TYPE__": "LinkContent",
+				"key": "52b9ec01-7231-45c0-af06-5320bca9d442",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev",
+					"text": "begun"
+				}
+			}
+		},
+		"items": []
+	}
+]

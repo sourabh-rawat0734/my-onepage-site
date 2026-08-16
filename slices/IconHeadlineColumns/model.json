@@ -1,0 +1,49 @@
+{
+  "type": "SharedSlice",
+  "id": "icon_headline_columns",
+  "name": "IconHeadlineColumns",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Displays 2-6 columns with consistent structure: icon, bold heading, supporting headline, and smaller description.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Items",
+            "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon"
+                }
+              },
+              "headline": {
+                "type": "Text",
+                "config": {
+                  "label": "Headline"
+                }
+              },
+              "subheadline": {
+                "type": "Text",
+                "config": {
+                  "label": "Subheadline"
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

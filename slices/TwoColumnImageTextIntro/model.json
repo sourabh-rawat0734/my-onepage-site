@@ -1,0 +1,58 @@
+{
+  "type": "SharedSlice",
+  "id": "two_column_image_text_intro",
+  "name": "TwoColumnImageTextIntro",
+  "variations": [
+    {
+      "id": "image_left_text_right_intro",
+      "name": "Image Left, Text Right Intro",
+      "description": "A two-column section with an image on the left and a title, highlighted text, and description content on the right. Ideal for introductory or feature highlight sections.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "eyebrow": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph,strong,em,hyperlink",
+            "label": "Eyebrow"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1,strong,em,hyperlink",
+            "label": "Title"
+          }
+        },
+        "highlighted_text": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph,strong,em,hyperlink",
+            "label": "Highlighted Text"
+          }
+        },
+        "main_image": {
+          "type": "Image",
+          "config": {
+            "label": "Main Image"
+          }
+        },
+        "right_title_intro": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph,strong,em",
+            "label": "Right Title (Bolded)"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        }
+      }
+    }
+  ]
+}

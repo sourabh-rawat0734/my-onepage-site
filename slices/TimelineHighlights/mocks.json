@@ -1,0 +1,91 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "two_column_events",
+		"primary": {
+			"section_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Dried"
+						}
+					}
+				]
+			},
+			"section_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "In incididunt ut deserunt excepteur aliqua. Anim cupidatat consequat officia labore aliqua ad. Proident sunt quis fugiat duis laboris tempor est anim duis enim proident sunt cupidatat."
+						}
+					}
+				]
+			},
+			"milestones": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"key": "da0bacd6-b593-48f5-9c34-c32772e94de8",
+						"value": [
+							[
+								"date",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "could",
+									"type": "Text"
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "forget",
+									"type": "Text"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nostrud amet fugiat duis velit eiusmod qui do elit ad ea. Dolor consectetur culpa labore velit laboris excepteur veniam ipsum culpa nostrud sunt. Irure dolor ipsum cillum adipisicing proident commodo ullamco laborum non sint aute sint est."
+											}
+										}
+									]
+								}
+							],
+							[
+								"author",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "herd",
+									"type": "Text"
+								}
+							],
+							[
+								"linkedin_button",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "f8d7c3bf-37c5-494f-9d41-a7c13ce21879",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

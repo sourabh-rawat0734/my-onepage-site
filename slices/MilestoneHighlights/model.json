@@ -1,0 +1,74 @@
+{
+  "type": "SharedSlice",
+  "id": "milestone_highlights",
+  "name": "MilestoneHighlights",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Horizontally-arranged milestone cards under a heading, each with a date, title, description, author, and action button.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "headline": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Headline"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "milestones": {
+          "type": "Group",
+          "config": {
+            "label": "Milestones",
+            "fields": {
+              "date": {
+                "type": "Text",
+                "config": {
+                  "label": "Date"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph,strong",
+                  "label": "Title"
+                }
+              },
+              "milestone_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "label": "Milestone Description"
+                }
+              },
+              "author": {
+                "type": "Text",
+                "config": {
+                  "label": "Author"
+                }
+              },
+              "action_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Action Link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

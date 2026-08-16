@@ -1,0 +1,61 @@
+{
+  "type": "SharedSlice",
+  "id": "headline_cta_image",
+  "name": "HeroBanner",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "The standard layout featuring headline, subheading, descriptive text, call to action, and supportive image.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "eyebrow": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading4,strong,em,hyperlink",
+            "label": "Eyebrow / Intro Line"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1,strong,em",
+            "label": "Headline"
+          }
+        },
+        "emphasized_text": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2,em,strong",
+            "label": "Emphasized Text"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "primary_cta": {
+          "type": "Link",
+          "config": {
+            "label": "Primary CTA Button",
+            "allowText": true,
+            "repeat": false,
+            "select": null
+          }
+        },
+        "main_image": {
+          "type": "Image",
+          "config": {
+            "label": "Main Image"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

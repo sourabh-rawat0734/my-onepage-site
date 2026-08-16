@@ -1,0 +1,97 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"headline": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Determine"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Est et consequat velit sunt pariatur elit tempor veniam commodo. Cupidatat pariatur in laboris."
+						}
+					}
+				]
+			},
+			"milestones": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"key": "5f5e901a-dddf-48fa-935d-02a778dde80c",
+						"value": [
+							[
+								"date",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "explore",
+									"type": "Text"
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ea ex ut et."
+											}
+										}
+									]
+								}
+							],
+							[
+								"milestone_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Laboris deserunt occaecat excepteur eu."
+											}
+										}
+									]
+								}
+							],
+							[
+								"author",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "went",
+									"type": "Text"
+								}
+							],
+							[
+								"action_link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "c94b9f4a-cd47-4703-9ede-f8c35672fb09",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

@@ -1,0 +1,78 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "three_column_simple",
+		"primary": {
+			"section_heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Struck"
+						}
+					}
+				]
+			},
+			"section_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eiusmod incididunt consectetur commodo ea cupidatat culpa fugiat nulla aliquip labore est. Labore pariatur dolore do eiusmod pariatur id ullamco non ex voluptate aliquip esse. Duis aliqua dolor ex esse dolore consectetur nulla amet."
+						}
+					}
+				]
+			},
+			"timeline_items": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"key": "43cf449b-9bf8-420a-a858-6a05159d48a0",
+						"value": [
+							[
+								"date_label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "none",
+									"type": "Text"
+								}
+							],
+							[
+								"event_title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading4",
+											"content": {
+												"text": "Power"
+											}
+										}
+									]
+								}
+							],
+							[
+								"event_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ullamco qui dolore in ad velit dolor commodo eiusmod elit voluptate tempor."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

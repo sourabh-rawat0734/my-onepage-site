@@ -1,0 +1,121 @@
+{
+  "type": "SharedSlice",
+  "id": "multi_column_footer",
+  "name": "MultiColumnFooter",
+  "variations": [
+    {
+      "id": "standard",
+      "name": "Standard Multi-Column Footer",
+      "description": "Footer layout with four columns: Contact Info, Platform Links, Social Ecosystem, and Newsletter Signup. Includes group fields for links and social icons, and a form field for email subscription.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "columns": {
+          "type": "Group",
+          "config": {
+            "label": "Footer Columns",
+            "fields": {
+              "type": {
+                "type": "Select",
+                "config": {
+                  "label": "Column Type",
+                  "options": [
+                    "contact_info",
+                    "navigation_links",
+                    "social_links",
+                    "newsletter_signup",
+                    "custom"
+                  ]
+                }
+              },
+              "heading": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Column Heading"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "label": "Description"
+                }
+              },
+              "address": {
+                "type": "Text",
+                "config": {
+                  "label": "Address"
+                }
+              },
+              "secondary_contact": {
+                "type": "Text",
+                "config": {
+                  "label": "Secondary Contact Info"
+                }
+              },
+              "social_icons": {
+                "type": "Link",
+                "config": {
+                  "label": "Social Icons",
+                  "allowText": false,
+                  "repeat": true,
+                  "variants": [
+                    "facebook",
+                    "twitter",
+                    "instagram",
+                    "youtube",
+                    "linkedin"
+                  ],
+                  "select": null
+                }
+              },
+              "custom_links_heading": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "Custom Links Heading"
+                }
+              },
+              "custom_link_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Custom Link Label"
+                }
+              },
+              "custom_links": {
+                "type": "Link",
+                "config": {
+                  "label": "Custom Links",
+                  "allowText": true,
+                  "repeat": true,
+                  "select": null
+                }
+              },
+              "newsletter_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em",
+                  "label": "Newsletter Text"
+                }
+              },
+              "email_placeholder": {
+                "type": "Text",
+                "config": {
+                  "label": "Email Field Placeholder"
+                }
+              },
+              "submit_button_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Submit Button Label"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

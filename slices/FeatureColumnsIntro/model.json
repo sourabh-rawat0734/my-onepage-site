@@ -1,0 +1,65 @@
+{
+  "type": "SharedSlice",
+  "id": "feature_columns_intro",
+  "name": "FeatureColumnsIntro",
+  "variations": [
+    {
+      "id": "heading_text_3_column_feature",
+      "name": "Heading, Description, 3 Feature Columns",
+      "description": "This variation includes a small intro title, large heading, brief description, and three visually separate feature columns, each with a heading and description. Optionally, each feature can have an associated icon.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow (Small Section Title)"
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Heading"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em",
+            "label": "Description"
+          }
+        },
+        "features": {
+          "type": "Group",
+          "config": {
+            "label": "Features",
+            "fields": {
+              "icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Icon Name or Identifier"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Feature Title"
+                }
+              },
+              "feature_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em",
+                  "label": "Feature Description"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "standard",
+		"primary": {
+			"columns": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"key": "8bed652a-cbc1-49f7-8e58-09b7e45a34c8",
+						"value": [
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "social_links",
+									"type": "Select"
+								}
+							],
+							[
+								"heading",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Sharp"
+											}
+										}
+									]
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Aute occaecat laborum ut ipsum. Mollit fugiat exercitation ullamco laboris deserunt esse laboris."
+											}
+										}
+									]
+								}
+							],
+							[
+								"address",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "bread",
+									"type": "Text"
+								}
+							],
+							[
+								"secondary_contact",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "effort",
+									"type": "Text"
+								}
+							],
+							[
+								"social_icons",
+								{
+									"__TYPE__": "RepeatableContent",
+									"type": "Link",
+									"value": [
+										{
+											"__TYPE__": "LinkContent",
+											"key": "4dd1fee7-f0ef-4038-a1de-9b9753e7cfb4",
+											"value": {
+												"__TYPE__": "ExternalLink",
+												"url": "https://slicemachine.dev",
+												"variant": "youtube"
+											}
+										}
+									]
+								}
+							],
+							[
+								"custom_links_heading",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading4",
+											"content": {
+												"text": "Complex"
+											}
+										}
+									]
+								}
+							],
+							[
+								"custom_link_label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "fort",
+									"type": "Text"
+								}
+							],
+							[
+								"custom_links",
+								{
+									"__TYPE__": "RepeatableContent",
+									"type": "Link",
+									"value": [
+										{
+											"__TYPE__": "LinkContent",
+											"key": "27379166-a083-4380-80c5-e0b385ce94d8",
+											"value": {
+												"__TYPE__": "ExternalLink",
+												"url": "https://slicemachine.dev",
+												"text": "stiff"
+											}
+										}
+									]
+								}
+							],
+							[
+								"newsletter_text",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Quis nostrud ea anim excepteur cillum ad ut sint nulla ipsum adipisicing est tempor qui."
+											}
+										}
+									]
+								}
+							],
+							[
+								"email_placeholder",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "happy",
+									"type": "Text"
+								}
+							],
+							[
+								"submit_button_label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "chest",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

@@ -1,0 +1,59 @@
+{
+  "type": "SharedSlice",
+  "id": "timeline_grid",
+  "name": "TimelineGrid",
+  "variations": [
+    {
+      "id": "three_column_simple",
+      "name": "3-Column Simple Timeline",
+      "description": "Displays timeline events in a three-column grid layout. Each event includes a date, title, and description. Supports unordered lists for additional sub-events or highlights in the description.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "section_heading": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2,strong,em",
+            "label": "Section Heading"
+          }
+        },
+        "section_description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Section Description"
+          }
+        },
+        "timeline_items": {
+          "type": "Group",
+          "config": {
+            "label": "Timeline Items",
+            "fields": {
+              "date_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Date Label"
+                }
+              },
+              "event_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "Event Title"
+                }
+              },
+              "event_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink,list-item",
+                  "label": "Event Description"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

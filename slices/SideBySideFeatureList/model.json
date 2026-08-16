@@ -1,0 +1,66 @@
+{
+  "type": "SharedSlice",
+  "id": "side_by_side_feature_list",
+  "name": "SideBySideFeatureList",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard layout with two adjacent feature groups and a highlighted section underneath.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Subtitle"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "feature_groups": {
+          "type": "Group",
+          "config": {
+            "label": "Feature Groups",
+            "fields": {
+              "group_heading": {
+                "type": "Text",
+                "config": {
+                  "label": "Group Heading"
+                }
+              },
+              "features": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink,list-item",
+                  "label": "Features"
+                }
+              }
+            }
+          }
+        },
+        "highlighted_text": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Highlighted Text"
+          }
+        }
+      }
+    }
+  ]
+}
