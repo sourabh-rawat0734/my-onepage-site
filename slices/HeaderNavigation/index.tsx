@@ -36,19 +36,19 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
         data-slice-variation={slice.variation}
         className="sticky top-0 z-40 bg-[#f0fbfa]/90 backdrop-blur-md border-b border-[#d2f3f1]/60 transition-all"
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-20 md:h-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-25 md:h-28">
           
-          {/* Responsive Enlarged Logo */}
-          <div className="flex items-center gap-3">
+          {/* Logo container with 25px padding on desktop */}
+          <div className="flex items-center gap-3 lg:p-[25px]">
             {slice.primary.logo ? (
               <PrismicNextImage
                 field={slice.primary.logo}
                 alt=""
-                className="h-11 sm:h-12 md:h-14 lg:h-16 w-auto object-contain transition-all duration-300"
+                className="h-11 sm:h-12 md:h-14 lg:h-auto lg:w-[200px] w-auto object-contain transition-all duration-300"
                 priority
               />
             ) : (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 lg:w-[200px]">
                 <span className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0e171e]">
                   Sym<span className="text-[#20a09a]">Ventra</span>
                 </span>
