@@ -57,7 +57,7 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
           </div>
 
           {/* Enhanced Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8 xl:gap-10 text-[15px] font-semibold text-[#1c2a38]">
+          <nav className="hidden lg:flex items-center gap-3 text-[15px] font-semibold text-[#1c2a38]">
             {slice.primary.nav_links?.map((item, index) => (
               <PrismicNextLink
                 key={index}
