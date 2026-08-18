@@ -8,6 +8,8 @@ export type SideBySideFeatureListProps =
 const SideBySideFeatureList = ({
   slice,
 }: SideBySideFeatureListProps): ReactNode => {
+  const groupCount = slice.primary.feature_groups?.length || 0;
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -42,9 +44,13 @@ const SideBySideFeatureList = ({
 
         </div>
 
-        {/* Feature Groups (Side-by-Side) */}
-        {slice.primary.feature_groups && slice.primary.feature_groups.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Feature Groups (Conditional Full Width or 2-Column Grid) */}
+        {groupCount > 0 && (
+          <div
+            className={`grid gap-8 ${
+              groupCount === 1 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
+            }`}
+          >
             {slice.primary.feature_groups.map((group, index) => (
               <div
                 key={index}
