@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ShieldCheck, Info, FlaskConical, ArrowRight, X } from "lucide-react";
+import { ShieldCheck, Info, FlaskConical, FileText, ArrowRight, X } from "lucide-react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
@@ -69,6 +69,24 @@ const MODAL_DATA = {
         </p>
         <p>
           Where applicable, studies are conducted with explicit informed consent, adhering rigorously to high international ethical standards, Institutional Review Board (IRB) guidelines, and GDPR regulations.
+        </p>
+      </div>
+    ),
+  },
+  terms: {
+    title: "Terms & Conditions",
+    tagline: "User Agreement",
+    icon: FileText,
+    content: (
+      <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
+        <p>
+          Welcome to <strong className="font-semibold text-slate-800">SymVentra</strong>. By accessing or using our services, you agree to comply with and be bound by these Terms and Conditions.
+        </p>
+        <p>
+          You agree to use the platform solely for lawful purposes and in accordance with all applicable local and international laws. Unauthorized use of our IP, content, or system infrastructure is strictly prohibited.
+        </p>
+        <p className="p-3.5 bg-slate-100 rounded-xl text-slate-700 text-xs">
+          We reserve the right to update or modify these terms at any time without prior notice. Continued use of the platform after updates constitutes acceptance of the modified terms.
         </p>
       </div>
     ),
@@ -142,6 +160,12 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
     } else if (lowerLabel.includes("disclaimer")) {
       e.preventDefault();
       setActiveModal("disclaimer");
+    } else if (
+      lowerLabel.includes("terms") ||
+      lowerLabel.includes("condition")
+    ) {
+      e.preventDefault();
+      setActiveModal("terms");
     } else if (
       lowerLabel.includes("research") ||
       lowerLabel.includes("citizen science") ||
