@@ -1,0 +1,192 @@
+module.exports = [
+"[project]/node_modules/next/headers.js [app-rsc] (ecmascript, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/node_modules_next_13dl5wv._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/node_modules/next/headers.js [app-rsc] (ecmascript)");
+    });
+});
+}),
+"[project]/slices/CoreTeamGrid/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_CoreTeamGrid_index_tsx_0xw8xg4._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/CoreTeamGrid/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/CtaHeroBanner/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/_0v_c4j7._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/CtaHeroBanner/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/FeatureColumnsIntro/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_FeatureColumnsIntro_index_tsx_0rhj8b-._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/FeatureColumnsIntro/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/FeaturedUpdates/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_FeaturedUpdates_index_tsx_02lpb9p._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/FeaturedUpdates/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/HeaderNavigation/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/_0wjp8yl._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/HeaderNavigation/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/HeroBanner/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_HeroBanner_index_tsx_1pd7ej_._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/HeroBanner/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/HeadlineDescriptionGraphCta/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_HeadlineDescriptionGraphCta_index_tsx_05w1rby._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/HeadlineDescriptionGraphCta/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/IconBulletlistIntro/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_IconBulletlistIntro_index_tsx_0rt4zjn._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/IconBulletlistIntro/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/IconHeadlineColumns/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_IconHeadlineColumns_index_tsx_1g2h_z6._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/IconHeadlineColumns/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/MediaSideIntro/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_MediaSideIntro_index_tsx_0cde_xt._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/MediaSideIntro/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/MilestoneHighlights/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_MilestoneHighlights_index_tsx_0qauctr._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/MilestoneHighlights/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/MilestoneTimeline/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_MilestoneTimeline_index_tsx_0_7fw1a._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/MilestoneTimeline/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/MultiColumnFooter/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_MultiColumnFooter_index_tsx_0-pelp5._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/MultiColumnFooter/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/SideBySideFeatureList/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_SideBySideFeatureList_index_tsx_16ejk2z._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/SideBySideFeatureList/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/TimelineGrid/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_TimelineGrid_index_tsx_11kdyb3._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/TimelineGrid/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/TimelineHighlights/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_TimelineHighlights_index_tsx_03bbez1._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/TimelineHighlights/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/TwoColumnImageTextIntro/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_TwoColumnImageTextIntro_index_tsx_0mighn8._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/TwoColumnImageTextIntro/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+"[project]/slices/VisualTextSplit/index.tsx [app-rsc] (ecmascript, next/dynamic entry, async loader)", ((__turbopack_context__) => {
+
+__turbopack_context__.v((parentImport) => {
+    return Promise.all([
+  "server/chunks/ssr/slices_VisualTextSplit_index_tsx_0d5rv72._.js"
+].map((chunk) => __turbopack_context__.l(chunk))).then(() => {
+        return parentImport("[project]/slices/VisualTextSplit/index.tsx [app-rsc] (ecmascript, next/dynamic entry)");
+    });
+});
+}),
+];

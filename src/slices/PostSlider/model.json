@@ -1,0 +1,74 @@
+{
+  "type": "SharedSlice",
+  "id": "post_slider",
+  "name": "PostSlider",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Displays a heading, an optional description, and a slider with post cards containing image, title, meta info, excerpt, and a call-to-action button.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Heading"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "posts": {
+          "type": "Group",
+          "config": {
+            "label": "Posts",
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Title"
+                }
+              },
+              "meta_info": {
+                "type": "Text",
+                "config": {
+                  "label": "Meta Info"
+                }
+              },
+              "excerpt": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "label": "Excerpt"
+                }
+              },
+              "cta": {
+                "type": "Link",
+                "config": {
+                  "label": "CTA Button",
+                  "allowText": true,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { ShieldCheck, Info, FlaskConical, ArrowRight } from "lucide-react";
+import { ShieldCheck, Info, FlaskConical, ArrowRight, X } from "lucide-react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
@@ -10,7 +9,74 @@ import { PrismicNextLink } from "@prismicio/next";
 export type MultiColumnFooterProps =
   SliceComponentProps<Content.MultiColumnFooterSlice>;
 
-// Helper to render SVG icons based on string variant
+// Modal Content Data Source
+const MODAL_DATA = {
+  privacy: {
+    title: "Privacy & Data Protection",
+    tagline: "Your data. Your control.",
+    icon: ShieldCheck,
+    content: (
+      <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
+        <p>
+          Your privacy is our highest priority. <strong className="font-semibold text-slate-800">SymVentra</strong> processes personal data in strict accordance with the General Data Protection Regulation (GDPR) and applies privacy and security by design principles.
+        </p>
+        <p>
+          Your data are processed only with your explicit consent and protected using advanced technical and organizational safeguards.
+        </p>
+        <div className="pt-2 flex flex-col gap-2">
+          <a
+            href="#"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00c8c8] hover:underline"
+          >
+            Read our Full Privacy Policy <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+          <a
+            href="#"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00c8c8] hover:underline"
+          >
+            Review Cookie Policy <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+    ),
+  },
+  disclaimer: {
+    title: "Medical & Health Disclaimer",
+    tagline: "Health & Guidance",
+    icon: Info,
+    content: (
+      <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
+        <p>
+          SymVentra provides evidence-informed lifestyle recommendations to support overall health and wellbeing.
+        </p>
+        <p className="p-3.5 bg-amber-50 border-l-4 border-amber-400 rounded-r-xl text-amber-900 font-medium text-xs">
+          Our platform does not provide medical advice and is not intended to diagnose, treat, cure, or prevent any medical condition or disease.
+        </p>
+        <p>
+          Always consult a qualified healthcare professional for medical concerns or before making significant changes to your health, regimen, or treatment plan.
+        </p>
+      </div>
+    ),
+  },
+  research: {
+    title: "Research & Citizen Science",
+    tagline: "Ethical Innovation",
+    icon: FlaskConical,
+    content: (
+      <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
+        <p>
+          Participation in our research initiatives and citizen science projects is completely voluntary.
+        </p>
+        <p>
+          Where applicable, studies are conducted with explicit informed consent, adhering rigorously to high international ethical standards, Institutional Review Board (IRB) guidelines, and GDPR regulations.
+        </p>
+      </div>
+    ),
+  },
+};
+
+type ModalType = keyof typeof MODAL_DATA | null;
+
 const renderSocialIcon = (variant?: string) => {
   switch (variant?.toLowerCase()) {
     case "facebook":
@@ -50,6 +116,7 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
     [];
 
   const [year, setYear] = useState<number | null>(null);
+  const [activeModal, setActiveModal] = useState<ModalType>(null);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
@@ -61,123 +128,34 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
     }
   };
 
+  // Helper function to check link text and open corresponding modal
+  const handleLinkClick = (e: React.MouseEvent, label?: string) => {
+    if (!label) return;
+    const lowerLabel = label.toLowerCase();
+
+    if (
+      lowerLabel.includes("privacy") ||
+      lowerLabel.includes("data protection")
+    ) {
+      e.preventDefault();
+      setActiveModal("privacy");
+    } else if (lowerLabel.includes("disclaimer")) {
+      e.preventDefault();
+      setActiveModal("disclaimer");
+    } else if (
+      lowerLabel.includes("research") ||
+      lowerLabel.includes("citizen science") ||
+      lowerLabel.includes("science")
+    ) {
+      e.preventDefault();
+      setActiveModal("research");
+    }
+  };
+
+  const currentModalData = activeModal ? MODAL_DATA[activeModal] : null;
+
   return (
     <>
-      {/* SECTION BEFORE FOOTER: Unboxed Legal & Information Grid */}
-      <section className="bg-[#030914] text-slate-300 pt-16 pb-12 px-6 md:px-12 lg:px-20 border-b border-slate-800/80 font-sans">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
-            
-            {/* Column 1: Privacy & Data Protection */}
-            <motion.article
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3 }}
-              className="flex flex-col justify-between space-y-4"
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="text-[#00c8c8] p-2 bg-[#00c8c8]/10 rounded-lg shrink-0">
-                    <ShieldCheck className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#00c8c8] block">
-                      Your data. Your control.
-                    </span>
-                    <h3 className="text-base font-bold text-white mt-0.5">
-                      Privacy & Data Protection
-                    </h3>
-                  </div>
-                </div>
-                <p className="text-xs leading-relaxed text-slate-400">
-                  Your privacy is our priority. <strong className="font-semibold text-slate-200">SymVentra</strong> processes personal data in accordance with the General Data Protection Regulation (GDPR) and applies privacy and security by design. Your data are processed only with your consent and protected using appropriate technical and organizational safeguards.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-1.5 pt-2">
-                <a
-                  href="#"
-                  className="group inline-flex items-center gap-1.5 text-xs font-semibold text-[#00c8c8] hover:text-white transition-colors"
-                >
-                  Learn more in our Privacy Policy
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                </a>
-                <a
-                  href="#"
-                  className="group inline-flex items-center gap-1.5 text-xs font-semibold text-[#00c8c8] hover:text-white transition-colors"
-                >
-                  Cookie Policy
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                </a>
-              </div>
-            </motion.article>
-
-            {/* Column 2: Medical Disclaimer */}
-            <motion.article
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-              className="flex flex-col justify-between space-y-4"
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="text-[#00c8c8] p-2 bg-[#00c8c8]/10 rounded-lg shrink-0">
-                    <Info className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#00c8c8] block">
-                      Health & Guidance
-                    </span>
-                    <h3 className="text-base font-bold text-white mt-0.5">
-                      Medical Disclaimer
-                    </h3>
-                  </div>
-                </div>
-                <p className="text-xs leading-relaxed text-slate-400">
-                  SymVentra provides evidence-informed lifestyle recommendations to support health and wellbeing. Our platform <strong className="font-semibold text-slate-200">does not provide medical advice</strong> and is not intended to diagnose, treat, cure, or prevent disease.
-                </p>
-              </div>
-
-              <p className="text-xs leading-relaxed text-slate-500 pt-3 border-t border-slate-800/60">
-                Always consult a qualified healthcare professional for medical concerns or before making significant changes to your health or treatment.
-              </p>
-            </motion.article>
-
-            {/* Column 3: Research & Citizen Science */}
-            <motion.article
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-              className="flex flex-col justify-between space-y-4"
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="text-[#00c8c8] p-2 bg-[#00c8c8]/10 rounded-lg shrink-0">
-                    <FlaskConical className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#00c8c8] block">
-                      Ethical Innovation
-                    </span>
-                    <h3 className="text-base font-bold text-white mt-0.5">
-                      Research & Citizen Science
-                    </h3>
-                  </div>
-                </div>
-                <p className="text-xs leading-relaxed text-slate-400">
-                  Participation in our research and citizen science projects is completely voluntary. Where applicable, studies are conducted with explicit informed consent, adhering rigorously to high ethical standards and GDPR requirements.
-                </p>
-              </div>
-            </motion.article>
-
-          </div>
-        </div>
-      </section>
-
-      {/* FOOTER */}
       <footer
         data-slice-type={slice?.slice_type}
         data-slice-variation={slice?.variation}
@@ -249,7 +227,8 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
                         <PrismicNextLink
                           key={linkIdx}
                           field={linkField as Parameters<typeof PrismicNextLink>[0]["field"]}
-                          className="text-slate-300 hover:text-white transition-colors duration-200 w-fit"
+                          onClick={(e) => handleLinkClick(e, label)}
+                          className="text-slate-300 hover:text-white transition-colors duration-200 w-fit cursor-pointer"
                         >
                           {label}
                         </PrismicNextLink>
@@ -314,6 +293,52 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
           </button>
         </div>
       </footer>
+
+      {/* Modal Popup for Legal / Info Topics */}
+      {activeModal && currentModalData && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+          <div
+            className="fixed inset-0 bg-[#030914]/75 backdrop-blur-sm transition-opacity"
+            onClick={() => setActiveModal(null)}
+          />
+
+          <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl p-6 sm:p-8 z-10 border border-slate-100 max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setActiveModal(null)}
+              className="absolute top-5 right-5 p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors"
+              aria-label="Close dialog"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-3.5 mb-5">
+              <div className="text-[#00c8c8] p-3 bg-[#00c8c8]/10 rounded-2xl shrink-0">
+                <currentModalData.icon className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#00c8c8] block">
+                  {currentModalData.tagline}
+                </span>
+                <h3 className="text-xl font-bold text-slate-900 mt-0.5">
+                  {currentModalData.title}
+                </h3>
+              </div>
+            </div>
+
+            {currentModalData.content}
+
+            <div className="mt-8 pt-4 border-t border-slate-100 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setActiveModal(null)}
+                className="px-6 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-all shadow-md active:scale-95"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

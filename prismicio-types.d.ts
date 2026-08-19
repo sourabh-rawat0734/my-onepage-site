@@ -66,25 +66,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomepageDocumentDataSlicesSlice =
-  | MultiColumnFooterSlice
-  | MediaSideIntroSlice
-  | CtaHeroBannerSlice
-  | MilestoneTimelineSlice
-  | MilestoneHighlightsSlice
-  | TimelineHighlightsSlice
-  | TimelineGridSlice
-  | FeaturedUpdatesSlice
-  | CoreTeamGridSlice
-  | VisualTextSplitSlice
-  | TwoColumnImageTextIntroSlice
-  | SideBySideFeatureListSlice
-  | IconBulletlistIntroSlice
-  | FeatureColumnsIntroSlice
-  | HeadlineDescriptionGraphCtaSlice
-  | IconHeadlineColumnsSlice
-  | HeadlineCtaImageSlice
-  | HeaderNavigationSlice;
+type HomepageDocumentDataSlicesSlice = never;
 
 /**
  * Content for Homepage documents
@@ -441,6 +423,128 @@ type FeatureColumnsIntroSliceVariation =
 export type FeatureColumnsIntroSlice = prismic.SharedSlice<
   "feature_columns_intro",
   FeatureColumnsIntroSliceVariation
+>;
+
+/**
+ * Item in *FeaturedSlider → Blog Posts Showcase → Primary → Slides*
+ */
+export interface FeaturedSliderSliceBlogPostsShowcasePrimarySlidesItem {
+  /**
+   * Image field in *FeaturedSlider → Blog Posts Showcase → Primary → Slides*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_slider.blog_posts_showcase.primary.slides[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Headline field in *FeaturedSlider → Blog Posts Showcase → Primary → Slides*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_slider.blog_posts_showcase.primary.slides[].headline
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  headline: prismic.RichTextField;
+
+  /**
+   * Meta field in *FeaturedSlider → Blog Posts Showcase → Primary → Slides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_slider.blog_posts_showcase.primary.slides[].meta
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta: prismic.KeyTextField;
+
+  /**
+   * Excerpt field in *FeaturedSlider → Blog Posts Showcase → Primary → Slides*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_slider.blog_posts_showcase.primary.slides[].excerpt
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  excerpt: prismic.RichTextField;
+
+  /**
+   * Button field in *FeaturedSlider → Blog Posts Showcase → Primary → Slides*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_slider.blog_posts_showcase.primary.slides[].cta
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  cta: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *FeaturedSlider → Blog Posts Showcase → Primary*
+ */
+export interface FeaturedSliderSliceBlogPostsShowcasePrimary {
+  /**
+   * Title field in *FeaturedSlider → Blog Posts Showcase → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_slider.blog_posts_showcase.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *FeaturedSlider → Blog Posts Showcase → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_slider.blog_posts_showcase.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Slides field in *FeaturedSlider → Blog Posts Showcase → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_slider.blog_posts_showcase.primary.slides[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  slides: prismic.GroupField<
+    Simplify<FeaturedSliderSliceBlogPostsShowcasePrimarySlidesItem>
+  >;
+}
+
+/**
+ * Blog Posts Showcase variation for FeaturedSlider Slice
+ *
+ * - **API ID**: `blog_posts_showcase`
+ * - **Description**: Displays a slider with blog post previews including image, title, meta, summary, and a button. Includes controls for navigating the slides.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FeaturedSliderSliceBlogPostsShowcase = prismic.SharedSliceVariation<
+  "blog_posts_showcase",
+  Simplify<FeaturedSliderSliceBlogPostsShowcasePrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FeaturedSlider*
+ */
+type FeaturedSliderSliceVariation = FeaturedSliderSliceBlogPostsShowcase;
+
+/**
+ * FeaturedSlider Shared Slice
+ *
+ * - **API ID**: `featured_slider`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FeaturedSliderSlice = prismic.SharedSlice<
+  "featured_slider",
+  FeaturedSliderSliceVariation
 >;
 
 /**
@@ -2274,6 +2378,11 @@ declare module "@prismicio/client" {
       FeatureColumnsIntroSliceHeadingText3ColumnFeaturePrimary,
       FeatureColumnsIntroSliceVariation,
       FeatureColumnsIntroSliceHeadingText3ColumnFeature,
+      FeaturedSliderSlice,
+      FeaturedSliderSliceBlogPostsShowcasePrimarySlidesItem,
+      FeaturedSliderSliceBlogPostsShowcasePrimary,
+      FeaturedSliderSliceVariation,
+      FeaturedSliderSliceBlogPostsShowcase,
       FeaturedUpdatesSlice,
       FeaturedUpdatesSliceDefaultPrimaryUpdatesItem,
       FeaturedUpdatesSliceDefaultPrimary,

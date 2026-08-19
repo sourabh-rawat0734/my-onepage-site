@@ -6,6 +6,7 @@ export const components = {
   core_team_grid: dynamic(() => import("./CoreTeamGrid")),
   cta_hero_banner: dynamic(() => import("./CtaHeroBanner")),
   feature_columns_intro: dynamic(() => import("./FeatureColumnsIntro")),
+  featured_slider: dynamic(() => import("./FeaturedSlider")),
   featured_updates: dynamic(() => import("./FeaturedUpdates")),
   header_navigation: dynamic(() => import("./HeaderNavigation")),
   headline_cta_image: dynamic(() => import("./HeroBanner")),

@@ -1,0 +1,74 @@
+{
+  "type": "SharedSlice",
+  "id": "featured_slider",
+  "name": "FeaturedSlider",
+  "variations": [
+    {
+      "id": "blog_posts_showcase",
+      "name": "Blog Posts Showcase",
+      "description": "Displays a slider with blog post previews including image, title, meta, summary, and a button. Includes controls for navigating the slides.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em",
+            "label": "Description"
+          }
+        },
+        "slides": {
+          "type": "Group",
+          "config": {
+            "label": "Slides",
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image"
+                }
+              },
+              "headline": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Headline"
+                }
+              },
+              "meta": {
+                "type": "Text",
+                "config": {
+                  "label": "Meta"
+                }
+              },
+              "excerpt": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Excerpt"
+                }
+              },
+              "cta": {
+                "type": "Link",
+                "config": {
+                  "label": "Button",
+                  "allowText": true,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

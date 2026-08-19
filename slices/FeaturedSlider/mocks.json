@@ -1,0 +1,114 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "blog_posts_showcase",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Diagram"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Laborum exercitation aute nostrud occaecat ea consequat deserunt cillum minim eu id laborum. Fugiat ex elit velit. Laborum aliquip dolore magna sint."
+						}
+					}
+				]
+			},
+			"slides": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"key": "01c89186-7da1-4aec-b9c6-faf257341df0",
+						"value": [
+							[
+								"image",
+								{
+									"__TYPE__": "ImageContent",
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2",
+										"width": 3648,
+										"height": 4560
+									},
+									"width": 3648,
+									"height": 4560,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2",
+									"alt": "quarter"
+								}
+							],
+							[
+								"headline",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Discovery"
+											}
+										}
+									]
+								}
+							],
+							[
+								"meta",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "longer",
+									"type": "Text"
+								}
+							],
+							[
+								"excerpt",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Et enim ullamco non deserunt cupidatat Lorem aute labore amet laboris laborum. Excepteur magna veniam in sit dolore excepteur commodo et sint nisi adipisicing et nostrud dolor minim. Commodo in ut enim ut consectetur minim cupidatat commodo minim ipsum commodo minim consequat mollit aute."
+											}
+										}
+									]
+								}
+							],
+							[
+								"cta",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "66e51c4d-759f-47a9-a500-8b9cd8fd7707",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev",
+										"text": "doubt"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
