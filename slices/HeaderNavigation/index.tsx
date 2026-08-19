@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
@@ -8,15 +9,30 @@ import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 export type HeaderNavigationProps = SliceComponentProps<Content.HeaderNavigationSlice>;
 
 const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({ fullName: "", email: "" });
 
+  // Track manual active selection
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  // Sync active item automatically based on current page route if not manually clicked
+  useEffect(() => {
+    if (slice.primary.nav_links && activeIndex === null) {
+      const currentIdx = slice.primary.nav_links.findIndex((item) => {
+        const linkUrl = (item.link as { url?: string })?.url;
+        return linkUrl && pathname === linkUrl;
+      });
+      setActiveIndex(currentIdx !== -1 ? currentIdx : 0);
+    }
+  }, [pathname, slice.primary.nav_links, activeIndex]);
+
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const openModal = () => {
     setIsModalOpen(true);
-    setIsOpen(false); // Close mobile menu if open
+    setIsOpen(false);
   };
   const closeModal = () => {
     setIsModalOpen(false);
@@ -36,19 +52,19 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
         data-slice-variation={slice.variation}
         className="sticky top-0 z-40 bg-[#f0fbfa]/90 backdrop-blur-md border-b border-[#d2f3f1]/60 transition-all"
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-25 md:h-28">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-24 md:h-28">
           
-          {/* Logo container with 25px padding on desktop */}
-          <div className="flex items-center gap-3 lg:p-[25px]">
+          {/* Logo container with enlarged height & proportional width */}
+          <div className="flex items-center shrink-0 py-2">
             {slice.primary.logo ? (
               <PrismicNextImage
                 field={slice.primary.logo}
                 alt=""
-                className="h-11 sm:h-12 md:h-14 lg:h-auto lg:w-[200px] w-auto object-contain transition-all duration-300"
+                className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto object-contain transition-all duration-300 max-w-[240px] sm:max-w-[280px]"
                 priority
               />
             ) : (
-              <div className="flex items-center gap-2 lg:w-[200px]">
+              <div className="flex items-center gap-2">
                 <span className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0e171e]">
                   Sym<span className="text-[#20a09a]">Ventra</span>
                 </span>
@@ -56,26 +72,38 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
             )}
           </div>
 
-          {/* Enhanced Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-3 text-[15px] font-semibold text-[#1c2a38]">
-            {slice.primary.nav_links?.map((item, index) => (
-              <PrismicNextLink
-                key={index}
-                field={item.link}
-                className="relative py-1 transition-colors duration-300 hover:text-[#20a09a] group"
-              >
-                {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#20a09a] transition-all duration-300 group-hover:w-full rounded-full" />
-              </PrismicNextLink>
-            ))}
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-[14px] xl:text-[15px] font-semibold text-[#1c2a38]">
+            {slice.primary.nav_links?.map((item, index) => {
+              const isActive = activeIndex === index;
+
+              return (
+                <PrismicNextLink
+                  key={index}
+                  field={item.link}
+                  onClick={() => setActiveIndex(index)}
+                  className={`relative py-2 whitespace-nowrap transition-colors duration-300 hover:text-[#20a09a] group ${
+                    isActive ? "text-[#20a09a] font-bold" : "text-[#1c2a38]"
+                  }`}
+                >
+                  {item.label}
+                  {/* Single Active Indicator Line */}
+                  <span
+                    className={`absolute bottom-0 left-0 h-[2.5px] bg-[#20a09a] rounded-full transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </PrismicNextLink>
+              );
+            })}
           </nav>
 
-          {/* Desktop CTA Button Trigger */}
-          <div className="hidden lg:flex items-center">
+          {/* Desktop CTA Button */}
+          <div className="hidden lg:flex items-center shrink-0">
             <button
               type="button"
               onClick={openModal}
-              className="rounded-full bg-[#20a09a] hover:bg-[#188c87] px-7 py-3 text-sm font-semibold text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-[0.98]"
+              className="rounded-full bg-[#20a09a] hover:bg-[#188c87] px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap"
             >
               {slice.primary.cta_button?.text || "Join Pilot"}
             </button>
@@ -111,8 +139,13 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
                 <PrismicNextLink
                   key={index}
                   field={item.link}
-                  onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-[#1c2a38] hover:text-[#20a09a] py-2 transition-colors"
+                  onClick={() => {
+                    setActiveIndex(index);
+                    setIsOpen(false);
+                  }}
+                  className={`text-lg font-medium py-2 transition-colors ${
+                    activeIndex === index ? "text-[#20a09a] font-bold" : "text-[#1c2a38] hover:text-[#20a09a]"
+                  }`}
                 >
                   {item.label}
                 </PrismicNextLink>
@@ -134,15 +167,12 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
       {/* Join Pilot Waitlist Popup Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8">
-          {/* Backdrop */}
           <div
             className="fixed inset-0 bg-[#0f172a]/60 backdrop-blur-sm transition-opacity"
             onClick={closeModal}
           />
 
-          {/* Modal Container */}
           <div className="relative w-full max-w-lg bg-white rounded-3xl sm:rounded-[32px] shadow-2xl p-6 sm:p-10 z-10 transition-all border border-slate-100 max-h-[90vh] overflow-y-auto">
-            {/* Close Button */}
             <button
               onClick={closeModal}
               className="absolute top-5 right-5 sm:top-7 sm:right-7 p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-all"
@@ -155,7 +185,6 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
 
             {!isSubmitted ? (
               <div className="space-y-6 sm:space-y-7">
-                {/* Header Text */}
                 <div className="space-y-2 pr-6">
                   <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#0f172a] tracking-tight">
                     Join the Pilot Waitlist
@@ -165,7 +194,6 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
                   </p>
                 </div>
 
-                {/* Form */}
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-2">
                     <label htmlFor="fullName" className="block text-xs sm:text-sm font-semibold text-slate-800">
@@ -208,7 +236,6 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
                 </form>
               </div>
             ) : (
-              /* Success State */
               <div className="text-center py-8 space-y-4">
                 <div className="w-16 h-16 bg-[#20a09a]/10 text-[#20a09a] rounded-full flex items-center justify-center mx-auto">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
