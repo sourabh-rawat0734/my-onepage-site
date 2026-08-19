@@ -342,4 +342,5 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
     </>
   );
 };
+
 export default MultiColumnFooter;
