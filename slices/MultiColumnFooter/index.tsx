@@ -129,7 +129,7 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
   };
 
   // Helper function to check link text and open corresponding modal
-  const handleLinkClick = (e: React.MouseEvent, label?: string) => {
+  const handleLinkClick = (e: React.MouseEvent, label?: string | null) => {
     if (!label) return;
     const lowerLabel = label.toLowerCase();
 

@@ -1,7 +1,6 @@
 import { createClient } from "../prismicio";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
-import { notFound } from "next/navigation";
 
 export default async function Home() {
   const client = createClient();
@@ -12,7 +11,7 @@ export default async function Home() {
 
     return (
       <main className="min-h-screen bg-white text-slate-900">
-        <SliceZone slices={page.data.slices} components={components} />
+        <SliceZone slices={page.data.slices ?? []} components={components} />
       </main>
     );
   } catch (error) {
