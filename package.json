@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "build:cf": "opennextjs-cloudflare build",
-  "deploy": "opennextjs-cloudflare build && wrangler deploy",
-  "start": "next start",
-  "lint": "next lint",
-  "slicemachine": "start-slicemachine"
-},
+    "dev": "next dev",
+    "build": "next build",
+    "build:cf": "opennextjs-cloudflare build",
+    "deploy": "opennextjs-cloudflare build && wrangler deploy",
+    "start": "next start",
+    "lint": "next lint",
+    "slicemachine": "start-slicemachine"
+  },
   "dependencies": {
     "@prismicio/client": "^7.21.8",
     "@prismicio/next": "^2.3.0",
@@ -22,7 +22,8 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-icons": "^5.7.0",
-    "slice-machine-ui": "^2.21.4"
+    "slice-machine-ui": "^2.21.4",
+    "swiper": "^14.1.0"
   },
   "devDependencies": {
     "@opennextjs/cloudflare": "^1.20.2",
