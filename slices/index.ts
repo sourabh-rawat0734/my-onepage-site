@@ -19,6 +19,7 @@ export const components = {
   milestone_highlights: dynamic(() => import("./MilestoneHighlights")),
   milestone_timeline: dynamic(() => import("./MilestoneTimeline")),
   multi_column_footer: dynamic(() => import("./MultiColumnFooter")),
+  post_slider: dynamic(() => import("./PostSlider")),
   side_by_side_feature_list: dynamic(() => import("./SideBySideFeatureList")),
   timeline_grid: dynamic(() => import("./TimelineGrid")),
   timeline_highlights: dynamic(() => import("./TimelineHighlights")),

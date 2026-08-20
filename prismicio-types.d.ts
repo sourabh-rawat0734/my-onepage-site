@@ -66,7 +66,27 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomepageDocumentDataSlicesSlice = never;
+type HomepageDocumentDataSlicesSlice =
+  | HeadlineCtaImageSlice
+  | FeaturedSliderSlice
+  | TwoColumnImageTextIntroSlice
+  | TimelineHighlightsSlice
+  | TimelineGridSlice
+  | PostSliderSlice
+  | SideBySideFeatureListSlice
+  | MilestoneHighlightsSlice
+  | MilestoneTimelineSlice
+  | CtaHeroBannerSlice
+  | IconHeadlineColumnsSlice
+  | MediaSideIntroSlice
+  | FeatureColumnsIntroSlice
+  | HeadlineDescriptionGraphCtaSlice
+  | FeaturedUpdatesSlice
+  | IconBulletlistIntroSlice
+  | CoreTeamGridSlice
+  | VisualTextSplitSlice
+  | HeaderNavigationSlice
+  | MultiColumnFooterSlice;
 
 /**
  * Content for Homepage documents
@@ -1814,6 +1834,126 @@ export type MultiColumnFooterSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *PostSlider → Default → Primary → Posts*
+ */
+export interface PostSliderSliceDefaultPrimaryPostsItem {
+  /**
+   * Image field in *PostSlider → Default → Primary → Posts*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: post_slider.default.primary.posts[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *PostSlider → Default → Primary → Posts*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: post_slider.default.primary.posts[].title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Meta Info field in *PostSlider → Default → Primary → Posts*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: post_slider.default.primary.posts[].meta
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  meta: prismic.RichTextField;
+
+  /**
+   * Excerpt field in *PostSlider → Default → Primary → Posts*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: post_slider.default.primary.posts[].excerpt
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  excerpt: prismic.RichTextField;
+
+  /**
+   * Read More Link field in *PostSlider → Default → Primary → Posts*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: post_slider.default.primary.posts[].cta
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  cta: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *PostSlider → Default → Primary*
+ */
+export interface PostSliderSliceDefaultPrimary {
+  /**
+   * Section Title field in *PostSlider → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: post_slider.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Section Subtitle field in *PostSlider → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: post_slider.default.primary.section_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_subtitle: prismic.RichTextField;
+
+  /**
+   * Posts field in *PostSlider → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: post_slider.default.primary.posts[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  posts: prismic.GroupField<Simplify<PostSliderSliceDefaultPrimaryPostsItem>>;
+}
+
+/**
+ * Default variation for PostSlider Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Displays a slider of post previews, including image, title, author/date/category meta, short description, and a link/button. Includes navigation arrows.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PostSliderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PostSliderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *PostSlider*
+ */
+type PostSliderSliceVariation = PostSliderSliceDefault;
+
+/**
+ * PostSlider Shared Slice
+ *
+ * - **API ID**: `post_slider`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PostSliderSlice = prismic.SharedSlice<
+  "post_slider",
+  PostSliderSliceVariation
+>;
+
+/**
  * Item in *SideBySideFeatureList → Default → Primary → Feature Groups*
  */
 export interface SideBySideFeatureListSliceDefaultPrimaryFeatureGroupsItem {
@@ -2432,6 +2572,11 @@ declare module "@prismicio/client" {
       MultiColumnFooterSliceStandardPrimary,
       MultiColumnFooterSliceVariation,
       MultiColumnFooterSliceStandard,
+      PostSliderSlice,
+      PostSliderSliceDefaultPrimaryPostsItem,
+      PostSliderSliceDefaultPrimary,
+      PostSliderSliceVariation,
+      PostSliderSliceDefault,
       SideBySideFeatureListSlice,
       SideBySideFeatureListSliceDefaultPrimaryFeatureGroupsItem,
       SideBySideFeatureListSliceDefaultPrimary,

@@ -1,0 +1,77 @@
+{
+  "type": "SharedSlice",
+  "id": "post_slider",
+  "name": "PostSlider",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Displays a slider of post previews, including image, title, author/date/category meta, short description, and a link/button. Includes navigation arrows.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "section_title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Section Title"
+          }
+        },
+        "section_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph",
+            "label": "Section Subtitle"
+          }
+        },
+        "posts": {
+          "type": "Group",
+          "config": {
+            "label": "Posts",
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "label": "Image"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Title"
+                }
+              },
+              "meta": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph,strong",
+                  "label": "Meta Info"
+                }
+              },
+              "excerpt": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Excerpt"
+                }
+              },
+              "cta": {
+                "type": "Link",
+                "config": {
+                  "label": "Read More Link",
+                  "allowText": true,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

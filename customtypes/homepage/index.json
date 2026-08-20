@@ -1,16 +1,77 @@
 {
-  "format": "custom",
   "id": "homepage",
   "label": "Homepage",
   "repeatable": false,
   "status": true,
+  "format": "custom",
   "json": {
     "Main": {
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "headline_cta_image": {
+              "type": "SharedSlice"
+            },
+            "featured_slider": {
+              "type": "SharedSlice"
+            },
+            "two_column_image_text_intro": {
+              "type": "SharedSlice"
+            },
+            "timeline_highlights": {
+              "type": "SharedSlice"
+            },
+            "timeline_grid": {
+              "type": "SharedSlice"
+            },
+            "post_slider": {
+              "type": "SharedSlice"
+            },
+            "side_by_side_feature_list": {
+              "type": "SharedSlice"
+            },
+            "milestone_highlights": {
+              "type": "SharedSlice"
+            },
+            "milestone_timeline": {
+              "type": "SharedSlice"
+            },
+            "cta_hero_banner": {
+              "type": "SharedSlice"
+            },
+            "icon_headline_columns": {
+              "type": "SharedSlice"
+            },
+            "media_side_intro": {
+              "type": "SharedSlice"
+            },
+            "feature_columns_intro": {
+              "type": "SharedSlice"
+            },
+            "headline_description_graph_cta": {
+              "type": "SharedSlice"
+            },
+            "featured_updates": {
+              "type": "SharedSlice"
+            },
+            "icon_bulletlist_intro": {
+              "type": "SharedSlice"
+            },
+            "core_team_grid": {
+              "type": "SharedSlice"
+            },
+            "visual_text_split": {
+              "type": "SharedSlice"
+            },
+            "header_navigation": {
+              "type": "SharedSlice"
+            },
+            "multi_column_footer": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }
