@@ -130,4 +130,4 @@ const PostSlider: FC<PostSliderProps> = ({ slice }) => {
   );
 };
 
-export default PostSlider;
+export default PostSlider; 
