@@ -14,13 +14,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Updated metadata definition
+// Clean metadata definition (Next.js automatically handles files inside /app)
 export const metadata: Metadata = {
   title: "SymVentra",
   description: "Choose the health future that fits you.",
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export default function RootLayout({
