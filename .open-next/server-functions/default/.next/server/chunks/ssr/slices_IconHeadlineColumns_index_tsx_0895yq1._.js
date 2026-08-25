@@ -1,0 +1,3 @@
+module.exports=[63919,a=>{"use strict";a.s(["default",()=>b]);let b=(0,a.i(11857).registerClientReference)(function(){throw Error("Attempted to call the default export of [project]/slices/IconHeadlineColumns/index.tsx from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"[project]/slices/IconHeadlineColumns/index.tsx","default")},4524,a=>{"use strict";var b=a.i(63919);a.n(b)},67568,function(a){a.n(a.i(4524))}];
+
+//# sourceMappingURL=slices_IconHeadlineColumns_index_tsx_0895yq1._.js.map

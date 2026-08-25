@@ -1,7 +1,7 @@
 {
+  "/[lang]/page": "/[lang]",
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
   "/api/revalidate/route": "/api/revalidate",
-  "/favicon.ico/route": "/favicon.ico",
-  "/page": "/"
+  "/favicon.ico/route": "/favicon.ico"
 }

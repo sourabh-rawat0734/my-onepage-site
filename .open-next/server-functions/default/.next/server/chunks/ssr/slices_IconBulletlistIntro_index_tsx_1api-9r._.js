@@ -1,0 +1,3 @@
+module.exports=[20065,a=>{"use strict";a.s(["default",()=>b]);let b=(0,a.i(11857).registerClientReference)(function(){throw Error("Attempted to call the default export of [project]/slices/IconBulletlistIntro/index.tsx from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"[project]/slices/IconBulletlistIntro/index.tsx","default")},41992,a=>{"use strict";var b=a.i(20065);a.n(b)},56096,function(a){a.n(a.i(41992))}];
+
+//# sourceMappingURL=slices_IconBulletlistIntro_index_tsx_1api-9r._.js.map

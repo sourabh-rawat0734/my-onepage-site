@@ -21,14 +21,17 @@
     "afterFiles": [],
     "fallback": []
   },
-  "dynamicRoutes": [],
-  "staticRoutes": [
+  "dynamicRoutes": [
     {
-      "page": "/",
-      "regex": "^/(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/(?:/)?$"
-    },
+      "page": "/[lang]",
+      "regex": "^/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlang": "nxtPlang"
+      },
+      "namedRegex": "^/(?<nxtPlang>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
     {
       "page": "/_global-error",
       "regex": "^/_global\\-error(?:/)?$",

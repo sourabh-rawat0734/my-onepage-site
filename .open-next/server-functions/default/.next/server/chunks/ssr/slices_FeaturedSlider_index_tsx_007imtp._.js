@@ -1,0 +1,3 @@
+module.exports=[81835,a=>{"use strict";var b=a.i(7997);a.s(["default",0,({slice:a})=>(0,b.jsxs)("section",{"data-slice-type":a.slice_type,"data-slice-variation":a.variation,children:["Placeholder component for featured_slider (variation: ",a.variation,") slices.",(0,b.jsx)("br",{}),(0,b.jsx)("strong",{children:"You can edit this slice directly in your code editor."})]})])},40554,function(a){a.n(a.i(81835))}];
+
+//# sourceMappingURL=slices_FeaturedSlider_index_tsx_007imtp._.js.map

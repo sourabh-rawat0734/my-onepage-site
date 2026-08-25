@@ -1,0 +1,3 @@
+module.exports=[7248,a=>{"use strict";a.s(["default",()=>b]);let b=(0,a.i(11857).registerClientReference)(function(){throw Error("Attempted to call the default export of [project]/slices/PostSlider/index.tsx from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"[project]/slices/PostSlider/index.tsx","default")},14685,a=>{"use strict";var b=a.i(7248);a.n(b)},43412,function(a){a.n(a.i(14685))}];
+
+//# sourceMappingURL=slices_PostSlider_index_tsx_0epbkdh._.js.map
