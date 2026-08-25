@@ -1,24 +1,34 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
+import { Phone, Mail, Globe, ChevronDown, Check } from "lucide-react";
 
 export type HeaderNavigationProps = SliceComponentProps<Content.HeaderNavigationSlice>;
 
 const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element => {
   const pathname = usePathname();
+  const router = useRouter();
+
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({ fullName: "", email: "" });
 
+  // Language State Management
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  
+  // Detect current locale from route (e.g., /nl-nl or /nl)
+  const isDutch = pathname.startsWith("/nl");
+  const currentLang = isDutch ? "nl" : "en";
+
   // Track manual active selection
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  // Sync active item automatically based on current page route if not manually clicked
+  // Sync active item automatically based on current page route
   useEffect(() => {
     if (slice.primary.nav_links && activeIndex === null) {
       const currentIdx = slice.primary.nav_links.findIndex((item) => {
@@ -45,27 +55,114 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
     setIsSubmitted(true);
   };
 
+  // Switch between English and Dutch routes
+  const handleLanguageChange = (targetLang: "en" | "nl") => {
+    setIsLangOpen(false);
+
+    if (targetLang === "en" && isDutch) {
+      // Replace /nl or /nl-nl prefix with /en-us
+      const newPath = pathname.replace(/^\/nl(-[a-z]+)?/, "/en-us");
+      router.push(newPath === pathname ? "/en-us" : newPath);
+    } else if (targetLang === "nl" && !isDutch) {
+      // Replace /en or /en-us prefix with /nl-nl
+      const newPath = pathname.replace(/^\/en(-[a-z]+)?/, "/nl-nl");
+      router.push(newPath === pathname ? "/nl-nl" : newPath);
+    }
+  };
+
   return (
     <>
+      {/* ================= TOP UTILITY BAR ================= */}
+      <div className="bg-[#0b2545] text-slate-200 text-xs sm:text-sm border-b border-slate-700/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-10">
+          
+          {/* Left: Contact Details */}
+          <div className="flex items-center gap-4 sm:gap-6">
+            <a
+              href="tel:+31201234567"
+              className="inline-flex items-center gap-2 hover:text-[#00A896] transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#00A896]" />
+              <span className="font-medium">+31 (0) 20 123 4567</span>
+            </a>
+            <a
+              href="mailto:Info@symventra.nl"
+              className="hidden sm:inline-flex items-center gap-2 hover:text-[#00A896] transition-colors"
+            >
+              <Mail className="w-3.5 h-3.5 text-[#00A896]" />
+              <span className="font-medium">Info@symventra.nl</span>
+            </a>
+          </div>
+
+          {/* Right: Language Switcher Dropdown */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setIsLangOpen((prev) => !prev)}
+              className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-800/80 hover:bg-slate-800 text-slate-200 text-xs font-semibold transition-colors cursor-pointer border border-slate-700"
+              aria-label="Select Language"
+            >
+              <Globe className="w-3.5 h-3.5 text-[#00A896]" />
+              <span>{currentLang === "en" ? "English" : "Nederlands"}</span>
+              <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isLangOpen ? "rotate-180" : ""}`} />
+            </button>
+
+            {/* Language Selection Menu */}
+            {isLangOpen && (
+              <>
+                <div
+                  className="fixed inset-0 z-40"
+                  onClick={() => setIsLangOpen(false)}
+                />
+                <div className="absolute right-0 mt-1.5 w-36 bg-white rounded-xl shadow-xl border border-slate-100 py-1.5 z-50 text-slate-800 text-xs font-medium animate-in fade-in-50 zoom-in-95">
+                  <button
+                    type="button"
+                    onClick={() => handleLanguageChange("en")}
+                    className={`w-full flex items-center justify-between px-3 py-2 hover:bg-slate-50 transition-colors cursor-pointer ${
+                      currentLang === "en" ? "text-[#00A896] font-bold bg-[#EBF7F8]/50" : ""
+                    }`}
+                  >
+                    <span>English (EN)</span>
+                    {currentLang === "en" && <Check className="w-3.5 h-3.5 text-[#00A896]" />}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleLanguageChange("nl")}
+                    className={`w-full flex items-center justify-between px-3 py-2 hover:bg-slate-50 transition-colors cursor-pointer ${
+                      currentLang === "nl" ? "text-[#00A896] font-bold bg-[#EBF7F8]/50" : ""
+                    }`}
+                  >
+                    <span>Nederlands (NL)</span>
+                    {currentLang === "nl" && <Check className="w-3.5 h-3.5 text-[#00A896]" />}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+
+        </div>
+      </div>
+
+      {/* ================= MAIN NAVIGATION HEADER ================= */}
       <header
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
         className="sticky top-0 z-40 bg-[#f0fbfa]/90 backdrop-blur-md border-b border-[#d2f3f1]/60 transition-all"
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-24 md:h-28">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-20 md:h-24">
           
-          {/* Logo container with enlarged height & proportional width */}
+          {/* Logo container */}
           <div className="flex items-center shrink-0 py-2">
             {slice.primary.logo ? (
               <PrismicNextImage
                 field={slice.primary.logo}
-                alt=""
-                className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto object-contain transition-all duration-300 max-w-[240px] sm:max-w-[280px]"
+                fallbackAlt=""
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-all duration-300 max-w-[220px] sm:max-w-[260px]"
                 priority
               />
             ) : (
               <div className="flex items-center gap-2">
-                <span className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0e171e]">
+                <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0e171e]">
                   Sym<span className="text-[#20a09a]">Ventra</span>
                 </span>
               </div>
@@ -87,7 +184,6 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
                   }`}
                 >
                   {item.label}
-                  {/* Single Active Indicator Line */}
                   <span
                     className={`absolute bottom-0 left-0 h-[2.5px] bg-[#20a09a] rounded-full transition-all duration-300 ${
                       isActive ? "w-full" : "w-0 group-hover:w-full"
@@ -105,7 +201,7 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
               onClick={openModal}
               className="cursor-pointer rounded-full bg-[#20a09a] hover:bg-[#188c87] px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap"
             >
-              {slice.primary.cta_button?.text || "Join Pilot"}
+              {slice.primary.cta_button?.text || (currentLang === "nl" ? "Start Pilot" : "Join Pilot")}
             </button>
           </div>
 
@@ -157,14 +253,14 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
                 onClick={openModal}
                 className="cursor-pointer w-full max-w-xs text-center rounded-full bg-[#20a09a] hover:bg-[#188c87] px-6 py-3.5 text-base font-semibold text-white transition-all shadow-md active:scale-95"
               >
-                {slice.primary.cta_button?.text || "Join Pilot"}
+                {slice.primary.cta_button?.text || (currentLang === "nl" ? "Start Pilot" : "Join Pilot")}
               </button>
             </div>
           </div>
         )}
       </header>
 
-      {/* Join Pilot Waitlist Popup Modal */}
+      {/* ================= MODAL DIALOG ================= */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8">
           <div
@@ -187,17 +283,19 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
               <div className="space-y-6 sm:space-y-7">
                 <div className="space-y-2 pr-6">
                   <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#0f172a] tracking-tight">
-                    Join the Pilot Waitlist
+                    {currentLang === "nl" ? "Meld u aan voor de Pilot" : "Join the Pilot Waitlist"}
                   </h3>
                   <p className="text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
-                    Gain exclusive early validation rights into Europe&apos;s largest health database analytics suite.
+                    {currentLang === "nl"
+                      ? "Krijg vroegtijdig toegang tot Europa's meest geavanceerde gezondheidsdatabase."
+                      : "Gain exclusive early validation rights into Europe's largest health database analytics suite."}
                   </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-2">
                     <label htmlFor="fullName" className="block text-xs sm:text-sm font-semibold text-slate-800">
-                      Full Professional Name
+                      {currentLang === "nl" ? "Volledige Naam" : "Full Professional Name"}
                     </label>
                     <input
                       type="text"
@@ -212,7 +310,7 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
 
                   <div className="space-y-2">
                     <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-slate-800">
-                      Corporate / Institution Email
+                      {currentLang === "nl" ? "Zakelijk E-mailadres" : "Corporate / Institution Email"}
                     </label>
                     <input
                       type="email"
@@ -230,7 +328,7 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
                       type="submit"
                       className="cursor-pointer w-full py-3.5 sm:py-4 px-6 rounded-full bg-[#2b889b] hover:bg-[#207384] active:scale-[0.99] text-white font-semibold text-base sm:text-lg shadow-md transition-all duration-200"
                     >
-                      Submit Registry Details
+                      {currentLang === "nl" ? "Verstuur Aanvraag" : "Submit Registry Details"}
                     </button>
                   </div>
                 </form>
@@ -242,9 +340,16 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h4 className="text-2xl font-serif font-bold text-slate-900">Application Received</h4>
+                <h4 className="text-2xl font-serif font-bold text-slate-900">
+                  {currentLang === "nl" ? "Aanvraag Ontvangen" : "Application Received"}
+                </h4>
                 <p className="text-sm text-slate-500 max-w-sm mx-auto">
-                  Thank you, <span className="font-semibold text-slate-700">{formData.fullName}</span>. We have sent a confirmation email to <span className="font-semibold text-slate-700">{formData.email}</span>.
+                  {currentLang === "nl" ? "Bedankt" : "Thank you"},{" "}
+                  <span className="font-semibold text-slate-700">{formData.fullName}</span>.{" "}
+                  {currentLang === "nl"
+                    ? "We hebben een bevestiging gestuurd naar"
+                    : "We have sent a confirmation email to"}{" "}
+                  <span className="font-semibold text-slate-700">{formData.email}</span>.
                 </p>
                 <div className="pt-4">
                   <button
@@ -252,7 +357,7 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
                     onClick={closeModal}
                     className="cursor-pointer px-6 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm transition-all"
                   >
-                    Done
+                    {currentLang === "nl" ? "Sluiten" : "Done"}
                   </button>
                 </div>
               </div>

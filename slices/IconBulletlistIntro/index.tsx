@@ -33,6 +33,13 @@ const itemVariants: Variants = {
 const IconBulletlistIntro = ({
   slice,
 }: IconBulletlistIntroProps): ReactNode => {
+  // Cast slice.primary safely to bypass missing field errors in generated types
+  const primary = slice.primary as Record<string, any>;
+  const eyebrow = primary?.eyebrow;
+  const description = primary?.description;
+  const introText = primary?.intro_text;
+  const items = primary?.items as Array<Record<string, any>> | undefined;
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -44,7 +51,6 @@ const IconBulletlistIntro = ({
       <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-80 h-80 rounded-full bg-blue-200/20 blur-3xl pointer-events-none" />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-8 max-w-3xl space-y-6 sm:space-y-8">
-        
         {/* Intro / Heading Text Header */}
         <motion.div
           initial={{ opacity: 0, y: -12 }}
@@ -54,7 +60,7 @@ const IconBulletlistIntro = ({
           className="text-center space-y-3 max-w-2xl mx-auto"
         >
           {/* Eyebrow / Small Section Title */}
-          {slice.primary.eyebrow && (
+          {eyebrow && (
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -63,19 +69,20 @@ const IconBulletlistIntro = ({
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-teal-500/10 via-emerald-500/10 to-teal-500/15 border border-teal-300/60 px-4 py-1 text-xs font-extrabold tracking-widest text-[#00A896] uppercase shadow-2xs backdrop-blur-xs"
             >
               <Sparkles className="w-3.5 h-3.5 text-[#00A896] animate-pulse" />
-              <PrismicRichText field={slice.primary.eyebrow} />
+              <PrismicRichText field={eyebrow} />
             </motion.div>
           )}
 
           {/* Heading with Multi-Color Gradient Effect */}
-          {slice.primary.intro_text ? (
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] text-[#0B2545] 
+          {introText ? (
+            <div
+              className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] text-[#0B2545] 
               [&_h1]:bg-gradient-to-r [&_h1]:from-[#0B2545] [&_h1]:via-[#028090] [&_h1]:to-[#00A896] [&_h1]:bg-clip-text [&_h1]:text-transparent 
               [&_h2]:bg-gradient-to-r [&_h2]:from-[#0B2545] [&_h2]:via-[#028090] [&_h2]:to-[#00A896] [&_h2]:bg-clip-text [&_h2]:text-transparent
               [&_h3]:bg-gradient-to-r [&_h3]:from-[#0B2545] [&_h3]:via-[#028090] [&_h3]:to-[#00A896] [&_h3]:bg-clip-text [&_h3]:text-transparent
               [&_strong]:bg-gradient-to-r [&_strong]:from-[#00A896] [&_strong]:to-[#028090] [&_strong]:bg-clip-text [&_strong]:text-transparent [&_strong]:font-serif [&_strong]:italic"
             >
-              <PrismicRichText field={slice.primary.intro_text} />
+              <PrismicRichText field={introText} />
             </div>
           ) : (
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] text-[#0B2545]">
@@ -87,15 +94,15 @@ const IconBulletlistIntro = ({
           )}
 
           {/* Description Text */}
-          {slice.primary.description && (
+          {description && (
             <div className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl mx-auto font-medium space-y-4 [&_strong]:text-[#0B2545] [&_strong]:font-semibold">
-              <PrismicRichText field={slice.primary.description} />
+              <PrismicRichText field={description} />
             </div>
           )}
         </motion.div>
 
         {/* Bullet List Cards */}
-        {slice.primary.items && slice.primary.items.length > 0 && (
+        {items && items.length > 0 && (
           <motion.ul
             variants={containerVariants}
             initial="hidden"
@@ -103,7 +110,7 @@ const IconBulletlistIntro = ({
             viewport={{ once: true, margin: "-50px" }}
             className="space-y-3 sm:space-y-4"
           >
-            {slice.primary.items.map((item, index) => (
+            {items.map((item, index) => (
               <motion.li
                 key={index}
                 variants={itemVariants}
@@ -145,7 +152,6 @@ const IconBulletlistIntro = ({
             ))}
           </motion.ul>
         )}
-
       </div>
     </section>
   );

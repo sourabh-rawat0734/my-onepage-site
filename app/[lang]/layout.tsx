@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
-import "./globals.css";
+import "../globals.css";
 import CookieBanner from "@/components/CookieBanner";
 
 const geistSans = Geist({
@@ -14,23 +14,30 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Clean metadata definition (Next.js automatically handles files inside /app)
 export const metadata: Metadata = {
   title: "SymVentra",
   description: "Choose the health future that fits you.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params?: Promise<{ lang?: string }>;
 }>) {
+  // Safe resolution for params to prevent runtime crashes
+  const resolvedParams = params ? await params : undefined;
+  const langCode = resolvedParams?.lang ?? "en";
+  const htmlLang = langCode.split("-")[0] || "en";
+
   return (
     <html
-      lang="en"
+      lang={htmlLang}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      {/* Added font-sans to enforce Geist Sans globally on body & all child tags */}
+      <body className="font-sans min-h-full flex flex-col">
         {children}
 
         {/* Global Cookie Disclaimer */}
