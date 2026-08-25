@@ -103,7 +103,7 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
             <button
               type="button"
               onClick={openModal}
-              className="rounded-full bg-[#20a09a] hover:bg-[#188c87] px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap"
+              className="cursor-pointer rounded-full bg-[#20a09a] hover:bg-[#188c87] px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap"
             >
               {slice.primary.cta_button?.text || "Join Pilot"}
             </button>
@@ -114,7 +114,7 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
             <button
               onClick={toggleMenu}
               type="button"
-              className="p-2.5 rounded-xl text-[#1c2a38] hover:text-[#20a09a] hover:bg-[#d2f3f1]/50 focus:outline-none transition-colors"
+              className="cursor-pointer p-2.5 rounded-xl text-[#1c2a38] hover:text-[#20a09a] hover:bg-[#d2f3f1]/50 focus:outline-none transition-colors"
               aria-label="Toggle Navigation Menu"
             >
               {isOpen ? (
@@ -155,7 +155,7 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
               <button
                 type="button"
                 onClick={openModal}
-                className="w-full max-w-xs text-center rounded-full bg-[#20a09a] hover:bg-[#188c87] px-6 py-3.5 text-base font-semibold text-white transition-all shadow-md active:scale-95"
+                className="cursor-pointer w-full max-w-xs text-center rounded-full bg-[#20a09a] hover:bg-[#188c87] px-6 py-3.5 text-base font-semibold text-white transition-all shadow-md active:scale-95"
               >
                 {slice.primary.cta_button?.text || "Join Pilot"}
               </button>
@@ -168,14 +168,14 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8">
           <div
-            className="fixed inset-0 bg-[#0f172a]/60 backdrop-blur-sm transition-opacity"
+            className="fixed inset-0 bg-[#0f172a]/60 backdrop-blur-sm transition-opacity cursor-pointer"
             onClick={closeModal}
           />
 
           <div className="relative w-full max-w-lg bg-white rounded-3xl sm:rounded-[32px] shadow-2xl p-6 sm:p-10 z-10 transition-all border border-slate-100 max-h-[90vh] overflow-y-auto">
             <button
               onClick={closeModal}
-              className="absolute top-5 right-5 sm:top-7 sm:right-7 p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-all"
+              className="cursor-pointer absolute top-5 right-5 sm:top-7 sm:right-7 p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-all"
               aria-label="Close dialog"
             >
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -228,7 +228,7 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
                   <div className="pt-3">
                     <button
                       type="submit"
-                      className="w-full py-3.5 sm:py-4 px-6 rounded-full bg-[#2b889b] hover:bg-[#207384] active:scale-[0.99] text-white font-semibold text-base sm:text-lg shadow-md transition-all duration-200"
+                      className="cursor-pointer w-full py-3.5 sm:py-4 px-6 rounded-full bg-[#2b889b] hover:bg-[#207384] active:scale-[0.99] text-white font-semibold text-base sm:text-lg shadow-md transition-all duration-200"
                     >
                       Submit Registry Details
                     </button>
@@ -250,7 +250,7 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
                   <button
                     type="button"
                     onClick={closeModal}
-                    className="px-6 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm transition-all"
+                    className="cursor-pointer px-6 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm transition-all"
                   >
                     Done
                   </button>

@@ -112,7 +112,7 @@ const HeadlineCtaImage = ({
             )}
           </motion.div>
 
-          {/* Right Column: Hero Image with Vibrant Halo */}
+          {/* Right Column: Hero Image with Seamless Blending and Masking */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -130,15 +130,15 @@ const HeadlineCtaImage = ({
               }}
               className="relative w-full max-w-md lg:max-w-lg group"
             >
-              {/* Multicolor Gradient Glow Backlight */}
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-[#00A896]/30 via-emerald-400/20 to-blue-500/30 blur-2xl opacity-80 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              {/* Softened Multicolor Glow Backlight */}
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-[#00A896]/30 via-emerald-400/20 to-blue-500/30 blur-3xl opacity-80 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               {slice.primary.main_image && (
-                <div className="relative z-10 rounded-3xl overflow-hidden p-2">
+                <div className="relative z-10 w-full h-auto overflow-hidden [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)]">
                   <PrismicNextImage
                     field={slice.primary.main_image}
                     alt=""
-                    className="w-full h-auto object-contain drop-shadow-2xl"
+                    className="w-full h-auto object-contain mix-blend-multiply"
                     priority
                   />
                 </div>

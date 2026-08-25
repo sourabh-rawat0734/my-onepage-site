@@ -63,14 +63,14 @@ const HeadlineDescriptionGraphCta = ({
         data-slice-variation={slice.variation}
         className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-teal-50/20 to-teal-50/40 py-12 sm:py-16 md:py-20"
       >
-        {/* Ambient Glows */}
+        {/* Background Ambient Glows */}
         <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-teal-200/20 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-80 h-80 rounded-full bg-blue-200/20 blur-3xl pointer-events-none" />
 
         <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
-            {/* Left Column: Text Content */}
+            {/* Left Column: Styled Text Content */}
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -78,28 +78,25 @@ const HeadlineDescriptionGraphCta = ({
               viewport={{ once: true, margin: "-80px" }}
               className="lg:col-span-6 space-y-5 text-left"
             >
-              {/* Eyebrow & Icon Header Group */}
-              <motion.div variants={itemVariants} className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-[#00A896]/15 text-[#00A896] border border-teal-200/60 shadow-sm flex items-center justify-center shrink-0">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-
-                {slice.primary.eyebrow && (
-                  <div className="inline-flex items-center gap-2 rounded-full bg-teal-100/60 border border-teal-200/70 px-3.5 py-1 text-xs font-bold tracking-wide text-[#00A896] uppercase shadow-2xs">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00A896] opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00A896]" />
-                    </span>
+              {/* Pill Eyebrow Header Tag */}
+              {slice.primary.eyebrow && (
+                <motion.div variants={itemVariants} className="inline-flex">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-teal-500/10 via-emerald-500/10 to-teal-500/15 border border-teal-300/60 px-4 py-1.5 text-xs font-extrabold tracking-widest text-[#00A896] uppercase shadow-2xs backdrop-blur-xs">
+                    <Sparkles className="w-3.5 h-3.5 text-[#00A896] animate-pulse" />
                     <PrismicRichText field={slice.primary.eyebrow} />
                   </div>
-                )}
-              </motion.div>
+                </motion.div>
+              )}
 
-              {/* Headline matching previous section design */}
+              {/* Headline with Multi-Color Gradient Text Effect */}
               {slice.primary.headline && (
                 <motion.div
                   variants={itemVariants}
-                  className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B2545] [&_h1]:bg-gradient-to-r [&_h1]:from-[#0B2545] [&_h1]:via-[#113A2F] [&_h1]:to-[#00A896] [&_h1]:bg-clip-text [&_h1]:text-transparent [&_h2]:bg-gradient-to-r [&_h2]:from-[#0B2545] [&_h2]:via-[#113A2F] [&_h2]:to-[#00A896] [&_h2]:bg-clip-text [&_h2]:text-transparent [&_strong]:bg-gradient-to-r [&_strong]:from-[#0B2545] [&_strong]:via-[#113A2F] [&_strong]:to-[#00A896] [&_strong]:bg-clip-text [&_strong]:text-transparent"
+                  className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] text-[#0B2545] 
+                    [&_h1]:bg-gradient-to-r [&_h1]:from-[#0B2545] [&_h1]:via-[#028090] [&_h1]:to-[#00A896] [&_h1]:bg-clip-text [&_h1]:text-transparent 
+                    [&_h2]:bg-gradient-to-r [&_h2]:from-[#0B2545] [&_h2]:via-[#028090] [&_h2]:to-[#00A896] [&_h2]:bg-clip-text [&_h2]:text-transparent
+                    [&_h3]:bg-gradient-to-r [&_h3]:from-[#0B2545] [&_h3]:via-[#028090] [&_h3]:to-[#00A896] [&_h3]:bg-clip-text [&_h3]:text-transparent
+                    [&_strong]:bg-gradient-to-r [&_strong]:from-[#00A896] [&_strong]:to-[#028090] [&_strong]:bg-clip-text [&_strong]:text-transparent [&_strong]:font-serif [&_strong]:italic"
                 >
                   <PrismicRichText field={slice.primary.headline} />
                 </motion.div>
@@ -115,11 +112,11 @@ const HeadlineDescriptionGraphCta = ({
                 </motion.div>
               )}
 
-              {/* Description */}
+              {/* Styled Description Rich Text */}
               {slice.primary.description && (
                 <motion.div
                   variants={itemVariants}
-                  className="text-slate-600 text-sm sm:text-base leading-relaxed space-y-2 font-medium"
+                  className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium space-y-4 [&_strong]:text-[#0B2545] [&_strong]:font-semibold"
                 >
                   <PrismicRichText field={slice.primary.description} />
                 </motion.div>
@@ -134,7 +131,7 @@ const HeadlineDescriptionGraphCta = ({
                   <button
                     type="button"
                     onClick={() => setActiveModal("pilot")}
-                    className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-[#00A896] px-7 py-3 text-sm font-bold text-white shadow-md hover:bg-[#028090] hover:shadow-lg hover:shadow-[#00A896]/20 transition-all duration-200 active:scale-95 text-center"
+                    className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-[#00A896] px-7 py-3 text-sm font-bold text-white shadow-md hover:bg-[#028090] hover:shadow-lg hover:shadow-[#00A896]/20 transition-all duration-200 active:scale-95 text-center cursor-pointer"
                   >
                     <span className="relative z-10 flex items-center gap-1.5">
                       {slice.primary.primary_cta.text || "Join Pilot"} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
@@ -147,7 +144,7 @@ const HeadlineDescriptionGraphCta = ({
                   <button
                     type="button"
                     onClick={() => setActiveModal("partner")}
-                    className="w-full sm:w-auto inline-flex items-center justify-center rounded-full border-2 border-[#0B2545] px-7 py-2.5 text-sm font-bold text-[#0B2545] hover:bg-[#0B2545] hover:text-white transition-all duration-200 hover:shadow-md text-center active:scale-95"
+                    className="w-full sm:w-auto inline-flex items-center justify-center rounded-full border-2 border-[#0B2545] px-7 py-2.5 text-sm font-bold text-[#0B2545] hover:bg-[#0B2545] hover:text-white transition-all duration-200 hover:shadow-md text-center active:scale-95 cursor-pointer"
                   >
                     {slice.primary.secondary_cta.text || "Partner With Us"}
                   </button>
@@ -211,7 +208,7 @@ const HeadlineDescriptionGraphCta = ({
                           ? "bg-emerald-50 text-emerald-700 border-emerald-200/80"
                           : tag.color_scheme === "warning"
                           ? "bg-amber-50 text-amber-800 border-amber-200/80"
-                          : "bg-slate-100 text-slate-700 border-slate-200/80";
+                          : "bg-slate-100 text-[#0B2545] border-slate-200/80";
 
                       return (
                         <span
@@ -273,7 +270,7 @@ const HeadlineDescriptionGraphCta = ({
           <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 sm:p-7 z-10 border border-slate-100 max-h-[92vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-all"
+              className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-all cursor-pointer"
               aria-label="Close dialog"
             >
               <X className="w-5 h-5" />
@@ -324,7 +321,7 @@ const HeadlineDescriptionGraphCta = ({
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full py-3 px-5 rounded-full bg-[#20a09a] hover:bg-[#188c87] text-white font-bold text-sm shadow-md transition-all active:scale-98"
+                      className="w-full py-3 px-5 rounded-full bg-[#00A896] hover:bg-[#028090] text-white font-bold text-sm shadow-md transition-all active:scale-98 cursor-pointer"
                     >
                       Submit Registry Details
                     </button>
@@ -336,13 +333,13 @@ const HeadlineDescriptionGraphCta = ({
                 <div className="w-12 h-12 bg-teal-100 text-[#00A896] rounded-full flex items-center justify-center mx-auto">
                   <Check className="w-6 h-6 stroke-[3]" />
                 </div>
-                <h4 className="text-xl font-serif font-bold text-slate-900">Waitlist Request Sent</h4>
+                <h4 className="text-xl font-serif font-bold text-[#0B2545]">Waitlist Request Sent</h4>
                 <p className="text-xs text-slate-500 max-w-xs mx-auto">
                   Thank you, <span className="font-semibold text-slate-700">{pilotData.fullName}</span>. We will contact you at <span className="font-semibold text-slate-700">{pilotData.email}</span> shortly.
                 </p>
                 <button
                   onClick={closeModal}
-                  className="mt-2 px-5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-all"
+                  className="mt-2 px-5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-all cursor-pointer"
                 >
                   Close
                 </button>
@@ -360,7 +357,7 @@ const HeadlineDescriptionGraphCta = ({
           <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 sm:p-7 z-10 border border-slate-100 max-h-[92vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-all"
+              className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-all cursor-pointer"
               aria-label="Close dialog"
             >
               <X className="w-5 h-5" />
@@ -426,7 +423,7 @@ const HeadlineDescriptionGraphCta = ({
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full py-3 px-5 rounded-full bg-[#20a09a] hover:bg-[#188c87] text-white font-bold text-sm shadow-md transition-all active:scale-98"
+                      className="w-full py-3 px-5 rounded-full bg-[#00A896] hover:bg-[#028090] text-white font-bold text-sm shadow-md transition-all active:scale-98 cursor-pointer"
                     >
                       Submit Registry Details
                     </button>
@@ -438,13 +435,13 @@ const HeadlineDescriptionGraphCta = ({
                 <div className="w-12 h-12 bg-teal-100 text-[#00A896] rounded-full flex items-center justify-center mx-auto">
                   <Check className="w-6 h-6 stroke-[3]" />
                 </div>
-                <h4 className="text-xl font-serif font-bold text-slate-900">Collaboration Request Sent</h4>
+                <h4 className="text-xl font-serif font-bold text-[#0B2545]">Collaboration Request Sent</h4>
                 <p className="text-xs text-slate-500 max-w-xs mx-auto">
                   Thank you, <span className="font-semibold text-slate-700">{partnerData.fullName}</span>. Our integration team will reach out to <span className="font-semibold text-slate-700">{partnerData.email}</span>.
                 </p>
                 <button
                   onClick={closeModal}
-                  className="mt-2 px-5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-all"
+                  className="mt-2 px-5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-all cursor-pointer"
                 >
                   Close
                 </button>
