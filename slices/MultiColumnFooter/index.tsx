@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Script from "next/script";
 import { ShieldCheck, Info, FlaskConical, FileText, ArrowRight, X } from "lucide-react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
@@ -29,12 +30,6 @@ const MODAL_DATA = {
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00c8c8] hover:underline"
           >
             Read our Full Privacy Policy <ArrowRight className="w-3.5 h-3.5" />
-          </a>
-          <a
-            href="#"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00c8c8] hover:underline"
-          >
-            Review Cookie Policy <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </div>
       </div>
@@ -180,6 +175,7 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
 
   return (
     <>
+     
       <footer
         data-slice-type={slice?.slice_type}
         data-slice-variation={slice?.variation}
