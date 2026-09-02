@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import { createClient } from "@/prismicio";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
+import { TrackPageView } from "@/components/TrackPageView";
 
 // Helper to map route params to Prismic locale codes
 function formatPrismicLocale(lang: string): string {
@@ -25,6 +27,15 @@ export default async function Home({
 
     return (
       <main className="min-h-screen bg-white text-slate-900">
+        {/* Page View Tracker */}
+        <Suspense fallback={null}>
+          <TrackPageView
+            documentId={page.id}
+            documentType={page.type}
+            locale={page.lang}
+          />
+        </Suspense>
+
         <SliceZone slices={page.data.slices ?? []} components={components} />
       </main>
     );
@@ -33,7 +44,12 @@ export default async function Home({
       <div className="flex min-h-screen flex-col items-center justify-center p-8 text-center">
         <h1 className="text-2xl font-bold mb-2">Homepage Not Found in Prismic</h1>
         <p className="text-slate-600 max-w-md">
-          Please make sure you have created and <strong>Published</strong> a <strong>Homepage</strong> document on Prismic.io for locale: <code className="bg-slate-100 px-2 py-1 rounded text-teal-600 font-mono text-sm">{prismicLang}</code>.
+          Please make sure you have created and <strong>Published</strong> a{" "}
+          <strong>Homepage</strong> document on Prismic.io for locale:{" "}
+          <code className="bg-slate-100 px-2 py-1 rounded text-teal-600 font-mono text-sm">
+            {prismicLang}
+          </code>
+          .
         </p>
       </div>
     );
