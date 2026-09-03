@@ -25,12 +25,6 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
   const isDutch = pathname.startsWith("/nl");
   const currentLang = isDutch ? "nl" : "en";
 
-  // Active navigation section ID (Tracks string ID instead of index)
-  const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
-
-  // Lock scroll detection temporarily during smooth scroll on link click
-  const isManualClick = useRef(false);
-
   // Helper to extract clean HTML element IDs from Prismic link objects
   const getSectionId = (linkObj: unknown): string | null => {
     if (!linkObj || typeof linkObj !== "object") return null;
@@ -44,10 +38,25 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
     return url.replace(/^\//, "") || null;
   };
 
+  // Active navigation section ID (Initialized to the first item's section ID)
+  const [activeSectionId, setActiveSectionId] = useState<string | null>(() => {
+    const firstLink = slice.primary.nav_links?.[0]?.link;
+    return firstLink ? getSectionId(firstLink) : null;
+  });
+
+  // Lock scroll detection temporarily during smooth scroll on link click
+  const isManualClick = useRef(false);
+
   // Setup Scroll-Spy using IntersectionObserver tied to section IDs
   useEffect(() => {
     const navLinks = slice.primary.nav_links;
     if (!navLinks || navLinks.length === 0) return;
+
+    // Default active item to the very first menu link if not already selected
+    const firstId = getSectionId(navLinks[0].link);
+    if (firstId && !activeSectionId) {
+      setActiveSectionId(firstId);
+    }
 
     // Collect valid target section elements present in the current DOM
     const sectionTargets = navLinks
@@ -57,11 +66,6 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
         return { id, element };
       })
       .filter((target): target is { id: string; element: HTMLElement } => target.id !== null && target.element !== null);
-
-    // Fallback: set initial active item if none selected yet
-    if (sectionTargets.length > 0 && !activeSectionId) {
-      setActiveSectionId(sectionTargets[0].id);
-    }
 
     const observerCallback: IntersectionObserverCallback = (entries) => {
       // Ignore scroll observation while smooth-scrolling from a manual user click
@@ -237,7 +241,10 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
           <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-[14px] xl:text-[15px] font-semibold text-[#1c2a38]">
             {slice.primary.nav_links?.map((item, index) => {
               const itemSectionId = getSectionId(item.link);
-              const isActive = activeSectionId !== null && itemSectionId === activeSectionId;
+              // Check active status or default to first item if no section active yet
+              const isActive =
+                (activeSectionId !== null && itemSectionId === activeSectionId) ||
+                (activeSectionId === null && index === 0);
 
               return (
                 <PrismicNextLink
@@ -297,7 +304,9 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
             <nav className="flex flex-col space-y-4 py-3 text-center">
               {slice.primary.nav_links?.map((item, index) => {
                 const itemSectionId = getSectionId(item.link);
-                const isActive = activeSectionId !== null && itemSectionId === activeSectionId;
+                const isActive =
+                  (activeSectionId !== null && itemSectionId === activeSectionId) ||
+                  (activeSectionId === null && index === 0);
 
                 return (
                   <PrismicNextLink

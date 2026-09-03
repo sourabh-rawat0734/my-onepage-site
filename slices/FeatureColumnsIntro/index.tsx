@@ -81,7 +81,7 @@ const FeatureColumnsIntro = ({
 
           {/* Description */}
           {slice.primary.description && (
-            <div className="w-full max-w-none text-left text-slate-600 text-sm sm:text-base leading-relaxed font-medium [&>*]:w-full [&>*]:max-w-none">
+            <div className="w-full max-w-none text-center text-slate-600 text-sm sm:text-base leading-relaxed font-medium [&>*]:w-full [&>*]:max-w-none">
   <PrismicRichText field={slice.primary.description} />
 </div>
           )}
