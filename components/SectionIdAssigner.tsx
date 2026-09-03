@@ -17,7 +17,7 @@ export default function SectionIdAssigner({
       sections.forEach((section, index) => {
         const heading = section.querySelector("h1, h2, h3, h4, h5, h6");
 
-        if (heading && heading.textContent) {
+        if (heading && heading.textContent && heading.textContent.trim()) {
           const slug = heading.textContent
             .toLowerCase()
             .trim()
@@ -25,8 +25,8 @@ export default function SectionIdAssigner({
             .replace(/[\s_-]+/g, "-")
             .replace(/^-+|-+$/g, "");
 
-          if (slug) {
-            // Overwrites existing English IDs with translated Dutch IDs
+          if (slug && section.id !== slug) {
+            // ALWAYS update the ID if it differs from the current heading text slug
             section.id = slug;
           }
         } else if (!section.id) {
@@ -34,12 +34,24 @@ export default function SectionIdAssigner({
         }
       });
     };
- 
-    // A short delay guarantees Prismic DOM content has hydrated and updated text
-    const timer = setTimeout(processSections, 100);
 
-    return () => clearTimeout(timer);
+    // 1. Run immediately on path change
+    processSections();
+
+    // 2. Watch for DOM text updates (e.g., when Prismic replaces English text with Dutch)
+    const observer = new MutationObserver(() => {
+      processSections();
+    });
+
+    const mainElement = document.querySelector("main") || document.body;
+    observer.observe(mainElement, {
+      childList: true,
+      subtree: true,
+      characterData: true, // Crucial: detects when heading inner text changes language
+    });
+
+    return () => observer.disconnect();
   }, [pathname]);
 
   return <>{children}</>;
-}
+} 
