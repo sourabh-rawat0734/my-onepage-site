@@ -65,7 +65,9 @@ const TwoColumnImageTextIntro = ({
                 }}
                 className="relative group w-full max-w-lg bg-white/80 backdrop-blur-md p-4 sm:p-5 rounded-3xl border border-teal-100 shadow-xl shadow-teal-900/5"
               >
-                <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-teal-400/20 to-blue-400/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                {/* Fixed Background Hover Glow Alignment */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-teal-400/20 to-blue-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                
                 <div className="relative z-10 overflow-hidden rounded-2xl bg-slate-50">
                   <PrismicNextImage
                     alt=""

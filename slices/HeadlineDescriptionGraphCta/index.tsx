@@ -3,7 +3,6 @@
 import React, { ReactNode, useState } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
-import { PrismicNextImage } from "@prismicio/next";
 import { motion, Variants } from "framer-motion";
 import { X, Check, ArrowRight, Sparkles, Activity } from "lucide-react";
 
@@ -159,7 +158,7 @@ const HeadlineDescriptionGraphCta = ({
               )}
             </motion.div>
 
-            {/* Right Column: Visualization Card */}
+            {/* Right Column: Exact Replica Card */}
             <motion.div
               initial={{ opacity: 0, x: 30, scale: 0.98 }}
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
@@ -175,86 +174,129 @@ const HeadlineDescriptionGraphCta = ({
                   repeatType: "mirror",
                   ease: "easeInOut",
                 }}
-                className="relative group bg-white/80 backdrop-blur-md p-6 sm:p-7 rounded-3xl border border-teal-100 shadow-xl shadow-teal-900/5 space-y-4"
+                className="relative max-w-[480px] mx-auto bg-white rounded-[28px] border border-slate-200/80 shadow-2xl shadow-slate-900/10 overflow-hidden text-slate-800"
               >
-                <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-teal-400/15 to-blue-400/15 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-                {/* Metric Title */}
-                {slice.primary.metric_title && (
-                  <div className="relative z-10 text-lg sm:text-xl font-black text-[#0B2545] tracking-tight flex items-center justify-between">
-                    <PrismicRichText field={slice.primary.metric_title} />
-                    <Activity className="w-5 h-5 text-[#00A896]" />
+                {/* Header Section */}
+                <div className="bg-[#0B1528] px-6 py-5 text-white flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#1C293D] flex items-center justify-center shrink-0 border border-slate-700/50">
+                    <span className="font-serif italic text-lg text-slate-200 tracking-wider">SV</span>
                   </div>
-                )}
-
-                {/* Graphic Container */}
-                {slice.primary.metric_visualization_image && (
-                  <div className="relative z-10 rounded-2xl overflow-hidden bg-slate-50/50 p-2 border border-teal-100/70 transition-all duration-300 group-hover:border-teal-200">
-                    <PrismicNextImage
-                      field={slice.primary.metric_visualization_image}
-                      className="w-full h-auto object-contain rounded-xl"
-                      alt=""
-                      priority
-                    />
+                  <div>
+                    <h3 className="font-semibold text-lg sm:text-xl tracking-tight leading-tight text-white">
+                      Microbiome Diagnostics View
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-400 font-normal mt-0.5">
+                      Continuous Clinical Stream Enabled
+                    </p>
                   </div>
-                )}
+                </div>
 
-                {/* Status Tags */}
-                {slice.primary.tag_list && slice.primary.tag_list.length > 0 && (
-                  <div className="relative z-10 flex flex-wrap gap-1.5">
-                    {slice.primary.tag_list.map((tag, index) => {
-                      const tagStyle =
-                        tag.color_scheme === "positive"
-                          ? "bg-emerald-50 text-emerald-700 border-emerald-200/80"
-                          : tag.color_scheme === "warning"
-                          ? "bg-amber-50 text-amber-800 border-amber-200/80"
-                          : "bg-slate-100 text-[#0B2545] border-slate-200/80";
-
-                      return (
-                        <span
-                          key={index}
-                          className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${tagStyle}`}
-                        >
-                          {tag.label}
-                        </span>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {/* Metrics Grid */}
-                {slice.primary.metrics_list &&
-                  slice.primary.metrics_list.length > 0 && (
-                    <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                      {slice.primary.metrics_list.map((metric, index) => {
-                        const metricColor =
-                          metric.style === "critical"
-                            ? "text-rose-600"
-                            : metric.style === "highlighted"
-                            ? "text-[#00A896]"
-                            : "text-[#0B2545]";
-
-                        return (
-                          <div
-                            key={index}
-                            className="bg-white p-3 rounded-2xl border border-slate-100 shadow-2xs space-y-0.5 hover:border-teal-200 transition-colors"
-                          >
-                            <span className="text-xs font-medium text-slate-500 block truncate">
-                              {metric.label}
-                            </span>
-                            <div className={`text-lg sm:text-xl font-black tracking-tight ${metricColor}`}>
-                              {metric.value}
-                              {metric.unit && (
-                                <span className="text-xs font-normal text-slate-500 ml-0.5">
-                                  {metric.unit}
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
+                {/* Card Content Body */}
+                <div className="p-6 sm:p-7 space-y-7 relative bg-white">
+                  
+                  {/* Gut Diversity Index Row */}
+                  <div className="flex items-baseline gap-4 pt-1">
+                    <span className="text-5xl sm:text-6xl font-serif text-[#2B6079] font-normal leading-none tracking-tight">
+                      84
+                    </span>
+                    <div className="space-y-0.5">
+                      <h4 className="text-xs sm:text-sm font-bold tracking-wider text-slate-500 uppercase">
+                        GUT DIVERSITY INDEX
+                      </h4>
+                      <p className="text-sm sm:text-base text-slate-500 font-normal">
+                        Optimized for Western European Baseline
+                      </p>
                     </div>
-                  )}
+                  </div>
+
+                  {/* Progress Bars Section */}
+                  <div className="space-y-4 pt-1">
+                    {/* Bar 1 */}
+                    <div className="flex items-center justify-between text-sm sm:text-base">
+                      <span className="w-36 sm:w-40 font-medium text-slate-800 shrink-0">
+                        Taxa Richness
+                      </span>
+                      <div className="flex-1 mx-3 h-2.5 rounded-full bg-slate-100/80 overflow-hidden">
+                        <div className="h-full w-[84%] bg-[#2B7A8E] rounded-full" />
+                      </div>
+                      <span className="font-semibold text-slate-900 w-10 text-right shrink-0">
+                        84%
+                      </span>
+                    </div>
+
+                    {/* Bar 2 */}
+                    <div className="flex items-center justify-between text-sm sm:text-base">
+                      <span className="w-36 sm:w-40 font-medium text-slate-800 shrink-0">
+                        Butyrate Genuses
+                      </span>
+                      <div className="flex-1 mx-3 h-2.5 rounded-full bg-slate-100/80 overflow-hidden">
+                        <div className="h-full w-[68%] bg-[#2B7A8E] rounded-full" />
+                      </div>
+                      <span className="font-semibold text-slate-900 w-10 text-right shrink-0">
+                        68%
+                      </span>
+                    </div>
+
+                    {/* Bar 3 */}
+                    <div className="flex items-center justify-between text-sm sm:text-base">
+                      <span className="w-36 sm:w-40 font-medium text-slate-800 shrink-0 leading-tight">
+                        Inflammation<br />Score
+                      </span>
+                      <div className="flex-1 mx-3 h-2.5 rounded-full bg-slate-100/80 overflow-hidden">
+                        <div className="h-full w-[18%] bg-[#D9730D] rounded-full" />
+                      </div>
+                      <span className="font-semibold text-slate-900 w-10 text-right shrink-0">
+                        Low
+                      </span>
+                    </div>
+
+                    {/* Bar 4 */}
+                    <div className="flex items-center justify-between text-sm sm:text-base">
+                      <span className="w-36 sm:w-40 font-medium text-slate-800 shrink-0 leading-tight">
+                        Metabolic<br />Syntrophy
+                      </span>
+                      <div className="flex-1 mx-3 h-2.5 rounded-full bg-slate-100/80 overflow-hidden">
+                        <div className="h-full w-[71%] bg-[#1E5267] rounded-full" />
+                      </div>
+                      <span className="font-semibold text-slate-900 w-10 text-right shrink-0">
+                        71%
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Pills / Tags */}
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    <span className="px-4 py-2 rounded-full bg-[#F4F5F7] border border-slate-200/60 text-slate-900 text-xs sm:text-sm font-medium">
+                      High-Fiber Dynamic
+                    </span>
+                    <span className="px-4 py-2 rounded-full bg-[#F4F5F7] border border-slate-200/60 text-slate-900 text-xs sm:text-sm font-medium">
+                      Symbiotic Resilient
+                    </span>
+                    <span className="px-4 py-2 rounded-full bg-[#FEF6E6] border border-[#FDE3B2] text-[#B46D14] text-xs sm:text-sm font-medium">
+                      Polyphenol Deficiency
+                    </span>
+                  </div>
+
+                  {/* Adaptive Recommendation Box */}
+                  <div className="relative rounded-2xl bg-[#E8F4F8] border-l-4 border-[#2B7A8E] p-4 text-xs sm:text-sm text-[#1A4557] leading-relaxed font-normal">
+                    <strong className="font-bold text-[#103545]">Adaptive Recommendation:</strong>{" "}
+                    Shifting microbial inputs to target polyphenol gaps increases diversity stability index by 14% within 12 days.
+                  </div>
+
+                  {/* Floating AI Bottom Badge */}
+                  <div className="-ml-2 -mb-2 inline-flex items-center gap-3 bg-white border border-slate-200/90 rounded-2xl p-3 shadow-lg shadow-slate-200/50">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#3FB1C5] shrink-0" />
+                    <div>
+                      <h5 className="text-xs sm:text-sm font-bold text-slate-900 leading-none">
+                        Continuous Adaptive AI
+                      </h5>
+                      <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5">
+                        Translating signals into clinical metrics
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
               </motion.div>
             </motion.div>
 
