@@ -85,7 +85,7 @@ const FeatureColumnsIntro = ({
   <PrismicRichText field={slice.primary.description} />
 </div>
           )}
-        </motion.div>
+        </motion.div> 
 
         {/* 3-Column Feature Cards */}
         {slice.primary.features && slice.primary.features.length > 0 && (

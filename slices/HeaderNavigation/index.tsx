@@ -53,10 +53,11 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
     if (!navLinks || navLinks.length === 0) return;
 
     // Default active item to the very first menu link if not already selected
-    const firstId = getSectionId(navLinks[0].link);
+    const firstId = navLinks[0] ? getSectionId(navLinks[0].link) : null;
     if (firstId && !activeSectionId) {
       setActiveSectionId(firstId);
     }
+
 
     // Collect valid target section elements present in the current DOM
     const sectionTargets = navLinks
