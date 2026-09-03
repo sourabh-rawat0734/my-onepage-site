@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
+import SectionIdAssigner from "@/components/SectionIdAssigner"; // Adjust path to match your file structure
 import "../globals.css";
 
 // Professional, modern enterprise typography
@@ -98,7 +99,7 @@ export default async function RootLayout({
       className={`${sansFont.variable} ${monoFont.variable} h-full antialiased`}
     >
       <body className="font-sans min-h-full flex flex-col antialiased text-slate-900 bg-white">
-        {/* Cookiebot via Next.js Script (Hoisted automatically by beforeInteractive) */}
+        {/* Cookiebot via Next.js Script */}
         <Script
           id="Cookiebot"
           src="https://consent.cookiebot.com/uc.js"
@@ -124,39 +125,8 @@ export default async function RootLayout({
           `}
         </Script>
 
-        {children}
-
-        {/* Script for dynamic section IDs */}
-        <Script id="add-section-ids" strategy="lazyOnload">
-          {`
-            (function assignSectionIds() {
-              const processSections = () => {
-                const sections = document.querySelectorAll('main section');
-                sections.forEach((section, index) => {
-                  if (!section.id) {
-                    const heading = section.querySelector('h1, h2, h3, h4, h5, h6');
-                    if (heading && heading.textContent) {
-                      const slug = heading.textContent
-                        .toLowerCase()
-                        .trim()
-                        .replace(/[^\\w\\s-]/g, '')
-                        .replace(/[\\s_-]+/g, '-')
-                        .replace(/^-+|-+$/g, '');
-                      section.id = slug || ('section-' + (index + 1));
-                    } else {
-                      section.id = 'section-' + (index + 1);
-                    }
-                  }
-                });
-              };
-
-              processSections();
-
-              const observer = new MutationObserver(() => processSections());
-              observer.observe(document.body, { childList: true, subtree: true });
-            })();
-          `}
-        </Script>
+        {/* Dynamic section ID assigner wrapping page layout */}
+        <SectionIdAssigner>{children}</SectionIdAssigner>
       </body>
     </html>
   );
