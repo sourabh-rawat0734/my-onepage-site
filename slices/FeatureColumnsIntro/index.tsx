@@ -74,16 +74,16 @@ const FeatureColumnsIntro = ({
 
           {/* Heading with Gradient Text Effect */}
           {slice.primary.heading && (
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B2545] [&_h1]:bg-gradient-to-r [&_h1]:from-[#0B2545] [&_h1]:via-[#113A2F] [&_h1]:to-[#00A896] [&_h1]:bg-clip-text [&_h1]:text-transparent [&_h2]:bg-gradient-to-r [&_h2]:from-[#0B2545] [&_h2]:via-[#113A2F] [&_h2]:to-[#00A896] [&_h2]:bg-clip-text [&_h2]:text-transparent">
-              <PrismicRichText field={slice.primary.heading} />
-            </div>
+            <div className="w-full text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0B2545] [&_h1]:bg-gradient-to-r [&_h1]:from-[#0B2545] [&_h1]:via-[#113A2F] [&_h1]:to-[#00A896] [&_h1]:bg-clip-text [&_h1]:text-transparent [&_h2]:bg-gradient-to-r [&_h2]:from-[#0B2545] [&_h2]:via-[#113A2F] [&_h2]:to-[#00A896] [&_h2]:bg-clip-text [&_h2]:text-transparent">
+  <PrismicRichText field={slice.primary.heading} />
+</div>
           )}
 
           {/* Description */}
           {slice.primary.description && (
-            <div className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl mx-auto font-medium">
-              <PrismicRichText field={slice.primary.description} />
-            </div>
+            <div className="w-full max-w-none text-left text-slate-600 text-sm sm:text-base leading-relaxed font-medium [&>*]:w-full [&>*]:max-w-none">
+  <PrismicRichText field={slice.primary.description} />
+</div>
           )}
         </motion.div>
 
