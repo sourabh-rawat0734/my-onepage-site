@@ -96,7 +96,7 @@ export default async function RootLayout({
   return (
     <html
       lang={htmlLang}
-      className={`${sansFont.variable} ${monoFont.variable} h-full antialiased`}
+      className={`${sansFont.variable} ${monoFont.variable} h-full antialiased scroll-pt-24 scroll-smooth`}
     >
       <body className="font-sans min-h-full flex flex-col antialiased text-slate-900 bg-white">
         {/* Cookiebot via Next.js Script */}
