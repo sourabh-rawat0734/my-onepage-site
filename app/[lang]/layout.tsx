@@ -123,7 +123,7 @@ export default async function RootLayout({
               send_page_view: false
             });
           `}
-        </Script>
+        </Script>  
 
         {/* Dynamic section ID assigner wrapping page layout */}
         <SectionIdAssigner>{children}</SectionIdAssigner>

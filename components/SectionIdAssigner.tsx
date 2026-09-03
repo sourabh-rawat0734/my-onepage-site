@@ -34,7 +34,7 @@ export default function SectionIdAssigner({
         }
       });
     };
-
+ 
     // A short delay guarantees Prismic DOM content has hydrated and updated text
     const timer = setTimeout(processSections, 100);
 
