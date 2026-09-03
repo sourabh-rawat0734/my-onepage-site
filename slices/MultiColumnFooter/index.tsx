@@ -141,30 +141,47 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
     }
   };
 
-  // Helper function to check link text and open corresponding modal
+  // Helper function supporting English and Dutch link keywords
   const handleLinkClick = (e: React.MouseEvent, label?: string | null) => {
     if (!label) return;
     const lowerLabel = label.toLowerCase();
 
+    // English & Dutch matchers for Privacy
     if (
       lowerLabel.includes("privacy") ||
-      lowerLabel.includes("data protection")
+      lowerLabel.includes("data protection") ||
+      lowerLabel.includes("gegevensbescherming") ||
+      lowerLabel.includes("privacybeleid")
     ) {
       e.preventDefault();
       setActiveModal("privacy");
-    } else if (lowerLabel.includes("disclaimer")) {
+    } 
+    // English & Dutch matchers for Disclaimer
+    else if (
+      lowerLabel.includes("disclaimer") ||
+      lowerLabel.includes("medische") ||
+      lowerLabel.includes("voorbehoud")
+    ) {
       e.preventDefault();
       setActiveModal("disclaimer");
-    } else if (
+    } 
+    // English & Dutch matchers for Terms & Conditions
+    else if (
       lowerLabel.includes("terms") ||
-      lowerLabel.includes("condition")
+      lowerLabel.includes("condition") ||
+      lowerLabel.includes("voorwaarden") ||
+      lowerLabel.includes("algemene")
     ) {
       e.preventDefault();
       setActiveModal("terms");
-    } else if (
+    } 
+    // English & Dutch matchers for Research & Science
+    else if (
       lowerLabel.includes("research") ||
       lowerLabel.includes("citizen science") ||
-      lowerLabel.includes("science")
+      lowerLabel.includes("science") ||
+      lowerLabel.includes("onderzoek") ||
+      lowerLabel.includes("wetenschap")
     ) {
       e.preventDefault();
       setActiveModal("research");
@@ -175,7 +192,6 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
 
   return (
     <>
-     
       <footer
         data-slice-type={slice?.slice_type}
         data-slice-variation={slice?.variation}
