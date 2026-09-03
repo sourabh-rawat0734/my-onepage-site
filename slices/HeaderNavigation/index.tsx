@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
@@ -20,24 +20,93 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
 
   // Language State Management
   const [isLangOpen, setIsLangOpen] = useState(false);
-  
+
   // Detect current locale from route (e.g., /nl-nl or /nl)
   const isDutch = pathname.startsWith("/nl");
   const currentLang = isDutch ? "nl" : "en";
 
-  // Track manual active selection
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  // Active navigation section ID (Tracks string ID instead of index)
+  const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
 
-  // Sync active item automatically based on current page route
-  useEffect(() => {
-    if (slice.primary.nav_links && activeIndex === null) {
-      const currentIdx = slice.primary.nav_links.findIndex((item) => {
-        const linkUrl = (item.link as { url?: string })?.url;
-        return linkUrl && pathname === linkUrl;
-      });
-      setActiveIndex(currentIdx !== -1 ? currentIdx : 0);
+  // Lock scroll detection temporarily during smooth scroll on link click
+  const isManualClick = useRef(false);
+
+  // Helper to extract clean HTML element IDs from Prismic link objects
+  const getSectionId = (linkObj: unknown): string | null => {
+    if (!linkObj || typeof linkObj !== "object") return null;
+    const url = (linkObj as { url?: string; slug?: string })?.url || (linkObj as { slug?: string })?.slug;
+    if (!url) return null;
+
+    if (url.includes("#")) {
+      return url.split("#")[1] || null;
     }
-  }, [pathname, slice.primary.nav_links, activeIndex]);
+    // Fallback: strip leading slashes if the url is formatted as "/about"
+    return url.replace(/^\//, "") || null;
+  };
+
+  // Setup Scroll-Spy using IntersectionObserver tied to section IDs
+  useEffect(() => {
+    const navLinks = slice.primary.nav_links;
+    if (!navLinks || navLinks.length === 0) return;
+
+    // Collect valid target section elements present in the current DOM
+    const sectionTargets = navLinks
+      .map((item) => {
+        const id = getSectionId(item.link);
+        const element = id ? document.getElementById(id) : null;
+        return { id, element };
+      })
+      .filter((target): target is { id: string; element: HTMLElement } => target.id !== null && target.element !== null);
+
+    // Fallback: set initial active item if none selected yet
+    if (sectionTargets.length > 0 && !activeSectionId) {
+      setActiveSectionId(sectionTargets[0].id);
+    }
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      // Ignore scroll observation while smooth-scrolling from a manual user click
+      if (isManualClick.current) return;
+
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSectionId(entry.target.id);
+        }
+      });
+    };
+
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      // Focus activation threshold in the top-middle region of the screen
+      rootMargin: "-25% 0px -50% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sectionTargets.forEach((target) => observer.observe(target.element));
+
+    return () => observer.disconnect();
+  }, [pathname, slice.primary.nav_links]);
+
+  // Handle clicking link items for smooth scrolling & state updating
+  const handleNavClick = (linkObj: unknown) => {
+    const sectionId = getSectionId(linkObj);
+
+    if (sectionId) {
+      setActiveSectionId(sectionId);
+      isManualClick.current = true;
+
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Unlock observer after smooth scroll completes
+      setTimeout(() => {
+        isManualClick.current = false;
+      }, 800);
+    }
+  };
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const openModal = () => {
@@ -60,11 +129,9 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
     setIsLangOpen(false);
 
     if (targetLang === "en" && isDutch) {
-      // Replace /nl or /nl-nl prefix with /en-us
       const newPath = pathname.replace(/^\/nl(-[a-z]+)?/, "/en-us");
       router.push(newPath === pathname ? "/en-us" : newPath);
     } else if (targetLang === "nl" && !isDutch) {
-      // Replace /en or /en-us prefix with /nl-nl
       const newPath = pathname.replace(/^\/en(-[a-z]+)?/, "/nl-nl");
       router.push(newPath === pathname ? "/nl-nl" : newPath);
     }
@@ -75,7 +142,6 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
       {/* ================= TOP UTILITY BAR ================= */}
       <div className="bg-[#0b2545] text-slate-200 text-xs sm:text-sm border-b border-slate-700/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-10">
-          
           {/* Left: Contact Details */}
           <div className="flex items-center gap-4 sm:gap-6">
             <a
@@ -139,7 +205,6 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
               </>
             )}
           </div>
-
         </div>
       </div>
 
@@ -150,7 +215,6 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
         className="sticky top-0 z-40 bg-[#f0fbfa]/90 backdrop-blur-md border-b border-[#d2f3f1]/60 transition-all"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between h-20 md:h-24">
-          
           {/* Logo container */}
           <div className="flex items-center shrink-0 py-2">
             {slice.primary.logo ? (
@@ -172,13 +236,14 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-[14px] xl:text-[15px] font-semibold text-[#1c2a38]">
             {slice.primary.nav_links?.map((item, index) => {
-              const isActive = activeIndex === index;
+              const itemSectionId = getSectionId(item.link);
+              const isActive = activeSectionId !== null && itemSectionId === activeSectionId;
 
               return (
                 <PrismicNextLink
                   key={index}
                   field={item.link}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => handleNavClick(item.link)}
                   className={`relative py-2 whitespace-nowrap transition-colors duration-300 hover:text-[#20a09a] group ${
                     isActive ? "text-[#20a09a] font-bold" : "text-[#1c2a38]"
                   }`}
@@ -224,28 +289,32 @@ const HeaderNavigation = ({ slice }: HeaderNavigationProps): React.JSX.Element =
               )}
             </button>
           </div>
-
         </div>
 
         {/* Mobile Menu Dropdown */}
         {isOpen && (
           <div className="lg:hidden bg-[#f0fbfa] border-b border-[#d2f3f1] px-6 pt-4 pb-8 shadow-2xl animate-in slide-in-from-top-2 duration-200">
             <nav className="flex flex-col space-y-4 py-3 text-center">
-              {slice.primary.nav_links?.map((item, index) => (
-                <PrismicNextLink
-                  key={index}
-                  field={item.link}
-                  onClick={() => {
-                    setActiveIndex(index);
-                    setIsOpen(false);
-                  }}
-                  className={`text-lg font-medium py-2 transition-colors ${
-                    activeIndex === index ? "text-[#20a09a] font-bold" : "text-[#1c2a38] hover:text-[#20a09a]"
-                  }`}
-                >
-                  {item.label}
-                </PrismicNextLink>
-              ))}
+              {slice.primary.nav_links?.map((item, index) => {
+                const itemSectionId = getSectionId(item.link);
+                const isActive = activeSectionId !== null && itemSectionId === activeSectionId;
+
+                return (
+                  <PrismicNextLink
+                    key={index}
+                    field={item.link}
+                    onClick={() => {
+                      handleNavClick(item.link);
+                      setIsOpen(false);
+                    }}
+                    className={`text-lg font-medium py-2 transition-colors ${
+                      isActive ? "text-[#20a09a] font-bold" : "text-[#1c2a38] hover:text-[#20a09a]"
+                    }`}
+                  >
+                    {item.label}
+                  </PrismicNextLink>
+                );
+              })}
             </nav>
             <div className="pt-4 flex justify-center">
               <button

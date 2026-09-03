@@ -1,21 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "../globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Professional, modern enterprise typography
+const sansFont = Plus_Jakarta_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const monoFont = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 // Comprehensive SEO Metadata Configuration
 export const metadata: Metadata = {
-  metadataBase: new URL("https://symventra.com"), // Replace with your production domain
+  metadataBase: new URL("https://symventra.com"),
   title: {
     default: "SymVentra | Choose the health future that fits you",
     template: "%s | SymVentra",
@@ -51,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "SymVentra",
     images: [
       {
-        url: "/og-image.jpg", // Add your OG image to public/og-image.jpg
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "SymVentra - Healthcare Solutions",
@@ -87,44 +90,43 @@ export default async function RootLayout({
   const langCode = resolvedParams?.lang ?? "en";
   const htmlLang = langCode.split("-")[0] || "en";
 
-  // Replace with your GA4 Measurement ID
   const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
 
   return (
     <html
       lang={htmlLang}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${sansFont.variable} ${monoFont.variable} h-full antialiased`}
     >
-      <head>
-  {/* Cookiebot via Next.js Script */}
-  <script
-    id="Cookiebot"
-    src="https://consent.cookiebot.com/uc.js"
-    data-cbid="76acced4-09ad-4300-92c2-3b066c02c028"
-    data-blockingmode="auto"
-    type="text/javascript"
-  />
+      <body className="font-sans min-h-full flex flex-col antialiased text-slate-900 bg-white">
+        {/* Cookiebot via Next.js Script (Hoisted automatically by beforeInteractive) */}
+        <Script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="76acced4-09ad-4300-92c2-3b066c02c028"
+          data-blockingmode="auto"
+          type="text/javascript"
+          strategy="beforeInteractive"
+        />
 
-  {/* Google Analytics 4 Script */}
-  <Script
-    src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-    strategy="afterInteractive"
-  />
-  <Script id="google-analytics" strategy="afterInteractive">
-    {`
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${GA_MEASUREMENT_ID}', {
-        send_page_view: false // Disables default pageviews so TrackPageView controls triggers
-      });
-    `}
-  </Script>
-</head>
-      <body className="font-sans min-h-full flex flex-col">
+        {/* Google Analytics 4 Script */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}', {
+              send_page_view: false
+            });
+          `}
+        </Script>
+
         {children}
 
-        {/* Script for section IDs */}
+        {/* Script for dynamic section IDs */}
         <Script id="add-section-ids" strategy="lazyOnload">
           {`
             (function assignSectionIds() {
