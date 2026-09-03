@@ -10,78 +10,78 @@ import { PrismicNextLink } from "@prismicio/next";
 export type MultiColumnFooterProps =
   SliceComponentProps<Content.MultiColumnFooterSlice>;
 
-// Modal Content Data Source
+// Modal Content Data Source (In Dutch)
 const MODAL_DATA = {
   privacy: {
-    title: "Privacy & Data Protection",
-    tagline: "Your data. Your control.",
+    title: "Privacy & Gegevensbescherming",
+    tagline: "Uw gegevens. Uw controle.",
     icon: ShieldCheck,
     content: (
       <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
         <p>
-          Your privacy is our highest priority. <strong className="font-semibold text-slate-800">SymVentra</strong> processes personal data in strict accordance with the General Data Protection Regulation (GDPR) and applies privacy and security by design principles.
+          Uw privacy is onze hoogste prioriteit. <strong className="font-semibold text-slate-800">SymVentra</strong> verwerkt persoonsgegevens in strikte overeenstemming met de Algemene Verordening Gegevensbescherming (AVG/GDPR) en past principes van privacy en beveiliging door ontwerp toe.
         </p>
         <p>
-          Your data are processed only with your explicit consent and protected using advanced technical and organizational safeguards.
+          Uw gegevens worden alleen verwerkt met uw uitdrukkelijke toestemming en beschermd met geavanceerde technische en organisatorische maatregelen.
         </p>
         <div className="pt-2 flex flex-col gap-2">
           <a
             href="#"
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00c8c8] hover:underline"
           >
-            Read our Full Privacy Policy <ArrowRight className="w-3.5 h-3.5" />
+            Lees ons volledige Privacybeleid <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </div>
       </div>
     ),
   },
   disclaimer: {
-    title: "Medical & Health Disclaimer",
-    tagline: "Health & Guidance",
+    title: "Medische & Gezondheidsdisclaimer",
+    tagline: "Gezondheid & Begeleiding",
     icon: Info,
     content: (
       <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
         <p>
-          SymVentra provides evidence-informed lifestyle recommendations to support overall health and wellbeing.
+          SymVentra biedt op bewijs gebaseerde leefstijladviezen om de algemene gezondheid en het welzijn te ondersteunen.
         </p>
         <p className="p-3.5 bg-amber-50 border-l-4 border-amber-400 rounded-r-xl text-amber-900 font-medium text-xs">
-          Our platform does not provide medical advice and is not intended to diagnose, treat, cure, or prevent any medical condition or disease.
+          Ons platform geeft geen medisch advies en is niet bedoeld om medische aandoeningen of ziektes te diagnosticeren, behandelen, genezen of voorkomen.
         </p>
         <p>
-          Always consult a qualified healthcare professional for medical concerns or before making significant changes to your health, regimen, or treatment plan.
+          Raadpleeg altijd een gekwalificeerde zorgverlener voor medische vragen of voordat u ingrijpende wijzigingen aanbrengt in uw gezondheid, regime of behandelplan.
         </p>
       </div>
     ),
   },
   research: {
-    title: "Research & Citizen Science",
-    tagline: "Ethical Innovation",
+    title: "Onderzoek & Burgerwetenschap",
+    tagline: "Ethische Innovatie",
     icon: FlaskConical,
     content: (
       <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
         <p>
-          Participation in our research initiatives and citizen science projects is completely voluntary.
+          Deelname aan onze onderzoeksinitiatieven en citizen science-projecten is volledig vrijwillig.
         </p>
         <p>
-          Where applicable, studies are conducted with explicit informed consent, adhering rigorously to high international ethical standards, Institutional Review Board (IRB) guidelines, and GDPR regulations.
+          Waar van toepassing worden onderzoeken uitgevoerd met uitdrukkelijke geïnformeerde toestemming, strikt volgens hoge internationale ethische normen, richtlijnen van de Medisch-Ethische Toetsingscommissie (METC) en de AVG-regelgeving.
         </p>
       </div>
     ),
   },
   terms: {
-    title: "Terms & Conditions",
-    tagline: "User Agreement",
+    title: "Algemene Voorwaarden",
+    tagline: "Gebruikersovereenkomst",
     icon: FileText,
     content: (
       <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
         <p>
-          Welcome to <strong className="font-semibold text-slate-800">SymVentra</strong>. By accessing or using our services, you agree to comply with and be bound by these Terms and Conditions.
+          Welkom bij <strong className="font-semibold text-slate-800">SymVentra</strong>. Door toegang te krijgen tot of gebruik te maken van onze diensten, gaat u akkoord met en bent u gebonden aan deze Algemene Voorwaarden.
         </p>
         <p>
-          You agree to use the platform solely for lawful purposes and in accordance with all applicable local and international laws. Unauthorized use of our IP, content, or system infrastructure is strictly prohibited.
+          U stemt ermee in het platform uitsluitend voor rechtmatige doeleinden te gebruiken en in overeenstemming met alle toepasselijke lokale en internationale wetten. Ongeautoriseerd gebruik van onze intellectuele eigendom, inhoud of systeeminfrastructuur is ten strengste verboden.
         </p>
         <p className="p-3.5 bg-slate-100 rounded-xl text-slate-700 text-xs">
-          We reserve the right to update or modify these terms at any time without prior notice. Continued use of the platform after updates constitutes acceptance of the modified terms.
+          Wij behouden ons het recht voor om deze voorwaarden op elk moment zonder voorafgaande kennisgeving bij te werken of te wijzigen. Voortgezet gebruik van het platform na updates houdt acceptatie in van de gewijzigde voorwaarden.
         </p>
       </div>
     ),
@@ -141,12 +141,11 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
     }
   };
 
-  // Helper function supporting English and Dutch link keywords
   const handleLinkClick = (e: React.MouseEvent, label?: string | null) => {
     if (!label) return;
     const lowerLabel = label.toLowerCase();
 
-    // English & Dutch matchers for Privacy
+    // Privacy matchers (EN & NL)
     if (
       lowerLabel.includes("privacy") ||
       lowerLabel.includes("data protection") ||
@@ -156,7 +155,7 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
       e.preventDefault();
       setActiveModal("privacy");
     } 
-    // English & Dutch matchers for Disclaimer
+    // Disclaimer matchers (EN & NL)
     else if (
       lowerLabel.includes("disclaimer") ||
       lowerLabel.includes("medische") ||
@@ -165,7 +164,7 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
       e.preventDefault();
       setActiveModal("disclaimer");
     } 
-    // English & Dutch matchers for Terms & Conditions
+    // Terms & Conditions matchers (EN & NL)
     else if (
       lowerLabel.includes("terms") ||
       lowerLabel.includes("condition") ||
@@ -175,7 +174,7 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
       e.preventDefault();
       setActiveModal("terms");
     } 
-    // English & Dutch matchers for Research & Science
+    // Research & Science matchers (EN & NL)
     else if (
       lowerLabel.includes("research") ||
       lowerLabel.includes("citizen science") ||
@@ -286,19 +285,19 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
                     className="flex flex-col space-y-3 pt-2"
                   >
                     <label htmlFor={`email-${index}`} className="text-slate-300 font-medium">
-                      Email
+                      E-mailadres
                     </label>
                     <input
                       id={`email-${index}`}
                       type="email"
-                      placeholder={column.email_placeholder || "Enter your email"}
+                      placeholder={column.email_placeholder || "Vul uw e-mailadres in"}
                       className="bg-slate-100 text-slate-900 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#00c8c8] w-full"
                     />
                     <button
                       type="submit"
                       className="bg-[#3d424d] hover:bg-slate-600 text-white font-medium px-6 py-2 rounded-full w-fit transition-colors duration-200"
                     >
-                      {column.submit_button_label || "Subscribe"}
+                      {column.submit_button_label || "Aanmelden"}
                     </button>
                   </form>
                 </div>
@@ -311,16 +310,16 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
         <div className="max-w-7xl mx-auto pt-8 flex items-center justify-between text-xs text-slate-500">
           <div className="w-full text-left space-y-2">
             <p>
-              <strong className="text-slate-400">Disclaimer:</strong> SymVentra is a personalized wellness platform providing evidence-informed lifestyle recommendations. It does not provide medical advice, diagnosis or treatment. Personal data are processed in accordance with the GDPR. © {year ?? "2026"} SymVentra B.V. All rights reserved.
+              <strong className="text-slate-400">Disclaimer:</strong> SymVentra is een gepersonaliseerd welzijnsplatform dat op bewijs gebaseerde leefstijladviezen biedt. Het geeft geen medisch advies, diagnose of behandeling. Persoonsgegevens worden verwerkt in overeenstemming met de AVG/GDPR. © {year ?? "2026"} SymVentra B.V. Alle rechten voorbehouden.
             </p>
             <p>
-              <strong className="text-slate-400">Copyright © {year ?? "2026"} SymVentra.</strong> All content, software, algorithms, reports, designs and trademarks on this website are the intellectual property of SymVentra B.V. and may not be copied or used without prior written permission. Certain technologies may be protected by patents or pending patent applications.
+              <strong className="text-slate-400">Auteursrecht © {year ?? "2026"} SymVentra.</strong> Alle inhoud, software, algoritmen, rapporten, ontwerpen en handelsmerken op deze website zijn het intellectuele eigendom van SymVentra B.V. en mogen niet worden gekopieerd of gebruikt zonder voorafgaande schriftelijke toestemming.
             </p>
           </div>
 
           <button
             onClick={scrollToTop}
-            aria-label="Scroll to top"
+            aria-label="Scroll naar boven"
             className="fixed bottom-6 right-6 bg-[#00c8c8] hover:bg-[#00a8a8] text-slate-950 p-3 rounded-full shadow-lg transition-transform duration-200 hover:scale-105 z-40"
           >
             <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -342,7 +341,7 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
             <button
               onClick={() => setActiveModal(null)}
               className="absolute top-5 right-5 p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors"
-              aria-label="Close dialog"
+              aria-label="Venster sluiten"
             >
               <X className="w-5 h-5" />
             </button>
@@ -369,7 +368,7 @@ const MultiColumnFooter = ({ slice }: MultiColumnFooterProps): React.JSX.Element
                 onClick={() => setActiveModal(null)}
                 className="px-6 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-all shadow-md active:scale-95"
               >
-                Close
+                Sluiten
               </button>
             </div>
           </div>
